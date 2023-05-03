@@ -6,16 +6,34 @@
 //
 
 import SwiftUI
+import OpenAISwift
+
 
 struct ContentView: View {
+    @State var prompt : String = ""
+    @StateObject private var network = APICaller.shared
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack{
+            Text("Write your questions")
+                .font(.headline)
+            TextField("Enter your name", text: $prompt)
+                .padding()
+                .background(Color(uiColor:  . secondarySystemBackground))
+                .padding()
+            Button("ASK"){
+                print("Tapped")
+                Task{
+                    await network.getResponse(prompt)
+                }
+            }
+                .padding()
+            
+            Text(network.answer)
+                .font(.headline)
+                .fontWeight(.bold)
+            
         }
-        .padding()
     }
 }
 
