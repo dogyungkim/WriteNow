@@ -14,7 +14,9 @@ class APICaller: ObservableObject{
     static let shared = APICaller()
     private var openAI : OpenAISwift?
     
-    private init(){}
+    private init(){
+        self.setup()
+    }
 
     @frozen enum Constants{
         static let key = "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"
@@ -24,8 +26,9 @@ class APICaller: ObservableObject{
         self.openAI = OpenAISwift(authToken: Constants.key)
     }
     
-    @MainActor
     func getResponse(_ prompt : String) async {
+        print("Called with")
+        print(prompt)
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "You are a helpful assistant."),
             ChatMessage(role: .user, content: prompt),
@@ -35,7 +38,7 @@ class APICaller: ObservableObject{
             answer = result?.choices?.first?.message.content ?? "ERORR 입니다."
             print(result?.choices?.first?.message.content ?? "")
         } catch {
-            
+            print("실패 ㅠㅠ")
         }
     }
 }
