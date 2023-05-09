@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F8462A07E46800E6F326 /* CollegeLetterView.swift */; };
+		9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84B2A09379700E6F326 /* TopHeaderView.swift */; };
 		93B5CE842A014FD4001CEBCA /* WriteNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B5CE832A014FD4001CEBCA /* WriteNowApp.swift */; };
 		93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B5CE852A014FD4001CEBCA /* ContentView.swift */; };
 		93B5CE882A014FD5001CEBCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B5CE872A014FD5001CEBCA /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		9388F8462A07E46800E6F326 /* CollegeLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterView.swift; sourceTree = "<group>"; };
+		9388F84B2A09379700E6F326 /* TopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderView.swift; sourceTree = "<group>"; };
 		93B5CE802A014FD4001CEBCA /* WriteNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WriteNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B5CE832A014FD4001CEBCA /* WriteNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNowApp.swift; sourceTree = "<group>"; };
 		93B5CE852A014FD4001CEBCA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				9388F8482A07EE5600E6F326 /* Utils */,
 				93B5CE852A014FD4001CEBCA /* ContentView.swift */,
 				9388F8462A07E46800E6F326 /* CollegeLetterView.swift */,
+				9388F84B2A09379700E6F326 /* TopHeaderView.swift */,
 				93B5CE942A02B313001CEBCA /* APICaller.swift */,
 				93B5CE872A014FD5001CEBCA /* Assets.xcassets */,
 				93B5CE892A014FD5001CEBCA /* Preview Content */,
@@ -159,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */,
 				9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */,
 				93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */,
 				93B5CE952A02B313001CEBCA /* APICaller.swift in Sources */,
