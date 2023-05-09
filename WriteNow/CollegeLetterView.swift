@@ -10,6 +10,9 @@ import SwiftUI
 struct CollegeLetterView: View {
     
     @State var 지원학과 : String = ""
+    @State var 교내활동 : String = ""
+    @State var 배운점 : String = ""
+    
     
     var body: some View {
         NavigationView{
@@ -26,15 +29,13 @@ struct CollegeLetterView: View {
                         .font(.title3)
                     TextField("컴퓨터공학과", text: $지원학과)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
                     Text("진로와 관련된 학습 경험 혹은 교내 활동")
                         .font(.title3)
-                    TextField("컴퓨터공학과", text: $지원학과)
+                    TextField("컴퓨터공학과", text: $교내활동)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
                     Text("활동들을 통해 배운 점")
                         .font(.title3)
-                    TextField("컴퓨터공학과", text: $지원학과)
+                    TextField("컴퓨터공학과", text: $배운점)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 .padding(20)
@@ -53,6 +54,7 @@ struct CollegeLetterView: View {
         }
     }
 }
+
 
 struct CollegeLetterView_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct CollegeLetterResultView: View {
+    var text : String = ""
+    var prompt : String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            //Header
+            Text("문항 1 자소서")
+                .font(.title)
+            Text("문항 1 자소서")
+                .frame(maxWidth: 330, maxHeight: .infinity)
+                .padding()
+                .background(Color(uiColor: .secondarySystemBackground))
+                .cornerRadius(16)
+            
+            Spacer()
+        }
     }
 }
 
