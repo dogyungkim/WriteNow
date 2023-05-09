@@ -11,7 +11,28 @@ import OpenAISwift
 
 struct ContentView: View {
     var body: some View {
-        CollegeLetterView()
+        TabView{
+            CollegeLetterView()
+                .tabItem({
+                    Image(systemName: "1.square.fill")
+                    Text("문항 1")
+                        .font(.title3)
+                })
+            CollegeLetterView()
+                .tabItem({
+                    Image(systemName: "2.square.fill")
+                    Text("문항 2")
+                })
+            CollegeLetterView()
+                .tabItem({
+                    Image(systemName: "3.square.fill")
+                    Text("문항 3")
+                })
+                
+        } // Tabview
+        .toolbarBackground(.red, for: .tabBar)
+        .accentColor(Color(red: 0, green: 21/255, blue: 41/255))
+        
     }
 }
 

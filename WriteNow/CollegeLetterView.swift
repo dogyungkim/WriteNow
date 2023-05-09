@@ -18,12 +18,11 @@ struct CollegeLetterView: View {
         NavigationView{
             VStack{
                 //Header
-                TopHeaderView("Write Now")
+                TopHeaderView("진학 자소서")
                 //Body
                 Text("문항1. 고등학교 재학 기간 중 자신의 진로와 관련하여 어떤 노력을 해왔는지 본인에게 의미 있는 학습 경험과 교내 활동을 중심으로 기술해 주시기 바랍니다.")
                     .padding(20)
                     .font(.title2)
-                
                 VStack(alignment: .leading){
                     Text("지원학과")
                         .font(.title3)
@@ -39,7 +38,7 @@ struct CollegeLetterView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 .padding(20)
-                
+
                 Spacer()
                 //Create Button with Navigattion
                 NavigationLink(destination: CollegeLetterResultView()){
@@ -50,11 +49,13 @@ struct CollegeLetterView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red:22/255,green:119/255,blue:255/255))
-            }
-        }
+                .padding(.bottom, 30)
+            } // Vstack
+            . background(Color(uiColor: .secondarySystemBackground))
+        }// Navigation View
+        
     }
 }
-
 
 struct CollegeLetterView_Previews: PreviewProvider {
     static var previews: some View {

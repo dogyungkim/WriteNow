@@ -18,7 +18,7 @@ struct TopHeaderView: View {
             Color(red: 0, green: 21/255, blue: 41/255)
                 .background(.ultraThinMaterial)
                 .ignoresSafeArea()
-            Text("Write Now")
+            Text(title)
                 .font(.largeTitle.weight(.bold))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading,20)

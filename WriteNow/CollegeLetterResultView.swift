@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct CollegeLetterResultView: View {
-    var text : String = ""
+    @State var text : String = ""
     var prompt : String = ""
+    
+    init(){
+        UITextView.appearance().backgroundColor  = .clear
+    }
     
     var body: some View {
         VStack{
             //Header
-            Text("문항 1 자소서")
-                .font(.title)
-            Text("문항 1 자소서")
-                .frame(maxWidth: 330, maxHeight: .infinity)
+           TopHeaderView("Write Now")
+
+            TextEditor(text:$text)
+                .frame(maxWidth: 330, maxHeight: .greatestFiniteMagnitude)
                 .padding()
-                .background(Color(uiColor: .secondarySystemBackground))
-                .cornerRadius(16)
+                .background(.black)
+                .cornerRadius(20)
             
-            Spacer()
         }
     }
 }
