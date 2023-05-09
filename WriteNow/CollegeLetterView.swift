@@ -12,6 +12,7 @@ struct CollegeLetterView: View {
     @State var 지원학과 : String = ""
     
     var body: some View {
+        NavigationView{
             VStack{
                 //Header
                 TopHeaderView("Write Now")
@@ -36,28 +37,26 @@ struct CollegeLetterView: View {
                     TextField("컴퓨터공학과", text: $지원학과)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
-                .padding(50)
+                .padding(20)
                 
                 Spacer()
-                
                 //Create Button with Navigattion
-                Button(action:{
-                    NavigationLink("자소서생성", destination: TopHeaderView("Navigated"))
-                }, label:{
-                            Text("자소서 생성")
-                                .frame(width: 300)
-                                .foregroundColor(.white)
-                                .font(.title2)
-                    })
-                    .buttonStyle(.borderedProminent)
-                    .tint(Color(red:22/255,green:119/255,blue:255/255))
-                    .padding(10)
+                NavigationLink(destination: CollegeLetterResultView()){
+                    Text("자소서 생성")
+                        .frame(width: 300)
+                        .foregroundColor(.white)
+                        .font(.title2)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Color(red:22/255,green:119/255,blue:255/255))
             }
+        }
     }
 }
 
 struct CollegeLetterView_Previews: PreviewProvider {
     static var previews: some View {
         CollegeLetterView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
     }
 }
