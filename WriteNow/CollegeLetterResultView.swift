@@ -23,7 +23,6 @@ struct CollegeLetterResultView: View {
             TextEditor(text:$text)
                 .frame(maxWidth: 330, maxHeight: .greatestFiniteMagnitude)
                 .padding()
-                .background(.black)
                 .cornerRadius(20)
             
         }
