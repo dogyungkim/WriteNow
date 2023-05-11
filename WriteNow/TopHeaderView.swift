@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TopHeaderView: View {
-    var title = ""
+    var title = "Write Now"
     init(_ title: String = "") {
         self.title = title
     }

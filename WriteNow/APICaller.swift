@@ -27,8 +27,6 @@ class APICaller: ObservableObject{
     }
     
     func getResponse(_ prompt : String) async {
-        print("Called with")
-        print(prompt)
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "You are a helpful assistant."),
             ChatMessage(role: .user, content: prompt),
