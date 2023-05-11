@@ -20,17 +20,16 @@ struct TopHeaderView: View {
                 .ignoresSafeArea()
             Text(title)
                 .font(.largeTitle.weight(.bold))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading,20)
+                .frame(maxWidth: .infinity, alignment: .center)
                 .foregroundColor(.white)
         }
-        .frame(height: 70)
         .frame(maxWidth: .infinity, alignment: .top)
+        .frame(height:60)
     }
     
     struct TopHeaderView_Previews: PreviewProvider {
         static var previews: some View {
-            TopHeaderView()
+            TopHeaderView("Write Now")
         }
     }
 }
