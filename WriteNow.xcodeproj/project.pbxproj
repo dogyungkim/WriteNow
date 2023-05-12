@@ -18,6 +18,8 @@
 		93B5CE8B2A014FD5001CEBCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B5CE8A2A014FD5001CEBCA /* Preview Assets.xcassets */; };
 		93B5CE932A015001001CEBCA /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93B5CE922A015001001CEBCA /* OpenAISwift */; };
 		93B5CE952A02B313001CEBCA /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B5CE942A02B313001CEBCA /* APICaller.swift */; };
+		93F462942A0E070B0084B8DF /* QuestionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F462932A0E070B0084B8DF /* QuestionTextView.swift */; };
+		93F462962A0E0CB20084B8DF /* QuestionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F462952A0E0CB20084B8DF /* QuestionSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		93B5CE872A014FD5001CEBCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93B5CE8A2A014FD5001CEBCA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		93B5CE942A02B313001CEBCA /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		93F462932A0E070B0084B8DF /* QuestionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTextView.swift; sourceTree = "<group>"; };
+		93F462952A0E0CB20084B8DF /* QuestionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,13 +50,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9388F8482A07EE5600E6F326 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		93B5CE772A014FD4001CEBCA = {
 			isa = PBXGroup;
 			children = (
@@ -73,13 +70,11 @@
 			isa = PBXGroup;
 			children = (
 				93B5CE832A014FD4001CEBCA /* WriteNowApp.swift */,
-				9388F8482A07EE5600E6F326 /* Utils */,
-				93B5CE852A014FD4001CEBCA /* ContentView.swift */,
-				9388F8462A07E46800E6F326 /* CollegeLetterView.swift */,
 				9388F84F2A0D397D00E6F326 /* HomeView.swift */,
-				9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */,
-				939E70AE2A09DA3400CAA503 /* CollegeLetterResultView.swift */,
-				9388F84B2A09379700E6F326 /* TopHeaderView.swift */,
+				93B5CE852A014FD4001CEBCA /* ContentView.swift */,
+				93F462972A0E0DF80084B8DF /* Model */,
+				93F462912A0E05390084B8DF /* LetterViews */,
+				93F462922A0E055B0084B8DF /* ViewComponents */,
 				93B5CE942A02B313001CEBCA /* APICaller.swift */,
 				93B5CE872A014FD5001CEBCA /* Assets.xcassets */,
 				93B5CE892A014FD5001CEBCA /* Preview Content */,
@@ -93,6 +88,33 @@
 				93B5CE8A2A014FD5001CEBCA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		93F462912A0E05390084B8DF /* LetterViews */ = {
+			isa = PBXGroup;
+			children = (
+				9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */,
+				93F462932A0E070B0084B8DF /* QuestionTextView.swift */,
+				939E70AE2A09DA3400CAA503 /* CollegeLetterResultView.swift */,
+				9388F8462A07E46800E6F326 /* CollegeLetterView.swift */,
+			);
+			path = LetterViews;
+			sourceTree = "<group>";
+		};
+		93F462922A0E055B0084B8DF /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				9388F84B2A09379700E6F326 /* TopHeaderView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		93F462972A0E0DF80084B8DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93F462952A0E0CB20084B8DF /* QuestionSet.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +193,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F462962A0E0CB20084B8DF /* QuestionSet.swift in Sources */,
+				93F462942A0E070B0084B8DF /* QuestionTextView.swift in Sources */,
 				9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */,
 				9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */,
 				93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */,
