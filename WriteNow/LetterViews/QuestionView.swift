@@ -13,7 +13,10 @@ struct QuestionView: View {
     //Questions
     let questions : QuestionSet
     
-    var bindText : [String]
+    @State var bindText : [String]
+    @State var text1 : String = ""
+    @State var text2 : String = ""
+    @State var text3 : String = ""
     
     init(headerTitle : String, questions : QuestionSet){
         self.headerTitle = headerTitle
@@ -35,13 +38,36 @@ struct QuestionView: View {
                         .cornerRadius(30)
                     
                     VStack(alignment: .leading){
-                        ForEach (Array(questions.texts.enumerated()), id: \.element) { index, question in
+                        /*
+                        ForEach (Array(questions.texts.indices), id: \.self) { index in
                             QuestionTextView(
-                                text: bindText[index],
-                                title:question.keywords,
-                                fieldText:question.examples
+                                text: self.$bindText[index],
+                                title:questions.texts[index].keywords,
+                                fieldText:questions.texts[index].examples
                             )
                         }
+                         */
+                        //first
+                        Text(questions.texts[0].keywords)
+                            .font(.title3)
+                            .padding(.bottom, 1)
+                        TextField("ex) " + questions.texts[0].examples, text: $text1)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.bottom, 10)
+                        //second
+                        Text(questions.texts[1].keywords)
+                            .font(.title3)
+                            .padding(.bottom, 1)
+                        TextField("ex) " + questions.texts[1].examples, text: $text2)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.bottom, 10)
+                        //third
+                        Text(questions.texts[2].keywords)
+                            .font(.title3)
+                            .padding(.bottom, 1)
+                        TextField("ex) " + questions.texts[2].examples, text: $text3)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.bottom, 10)
                     }
                     .padding(20)
                     .background(Color(uiColor: .secondarySystemBackground))
@@ -49,15 +75,17 @@ struct QuestionView: View {
                     
                     Spacer()
                     //Create Button with Navigattion
-                    NavigationLink(destination: CollegeLetterResultView()){
+                    NavigationLink(destination: CollegeLetterResultView(topic:questions.title, keywords: [text1,text2,text3])){
                         Text("자소서 생성")
                             .frame(width: 300)
                             .foregroundColor(.white)
                             .font(.title2)
+                           
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(Color(red:22/255,green:119/255,blue:255/255))
                     .padding(.bottom, 30)
+                   
                 
                 }//Body Vstack
                 .padding(10)

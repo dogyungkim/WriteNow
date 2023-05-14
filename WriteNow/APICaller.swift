@@ -14,6 +14,8 @@ class APICaller: ObservableObject{
     static let shared = APICaller()
     private var openAI : OpenAISwift?
     
+    var prompt : String = ""
+    
     private init(){
         self.setup()
     }
@@ -26,15 +28,23 @@ class APICaller: ObservableObject{
         self.openAI = OpenAISwift(authToken: Constants.key)
     }
     
-    func getResponse(_ prompt : String) async {
+    func makePrompt(topic : String, keywords : [String]){
+        prompt = #"자기소개서의 topic은 \(topic)이고 " 키워드 들은"#
+        for keyword in keywords{
+            prompt.append(keyword)
+        }
+    }
+    
+    
+    func getResponse() async {
         let chat: [ChatMessage] = [
-            ChatMessage(role: .system, content: "You are a helpful assistant."),
-            ChatMessage(role: .user, content: #"I want you to write cover letter for me. The text in side "" will be the topic. Than I will give some keywords to reference"#),
-            ChatMessage(role: .assistant, content: "Ok. Please write the topic and the keywords"),
-            ChatMessage(role: .user, content: prompt)
+            ChatMessage(role: .system, content: "너는 좋은 assistant야"),
+            ChatMessage(role: .user, content: #"대학입시를 위한 자기소개서를 쓰려고 해. 내가 "" 사이에 문항을 입력할께. 그리고 자소서에 참고할 키워드들을 입력할께."#),
+            ChatMessage(role: .assistant, content: "네. 문항과 키워드를 입력하시면, 자기소개서를 작성하겠습니다."),
+            ChatMessage(role: .user, content: self.prompt)
         ]
         do{
-            let result = try await openAI?.sendChat(with: chat)
+            let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)
             answer = result?.choices?.first?.message.content ?? "ERORR 입니다."
             print(result?.choices?.first?.message.content ?? "")
         } catch {
