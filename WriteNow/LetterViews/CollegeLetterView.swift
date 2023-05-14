@@ -32,9 +32,15 @@ struct CollegeLetterView: View {
             VStack{
                 TopHeaderView("Write Now")
                 VStack{
-                    MainBoxView(title: "문항 1", icon: "1.square.fill", width: 350)
-                    MainBoxView(title: "문항 2", icon: "2.square.fill", width: 350)
-                    MainBoxView(title: "자율 문항", icon: "3.square.fill",width: 350)
+                    NavigationLink(destination:QuestionView(headerTitle: questionOne.title, questions: questionOne)){
+                        MainBoxView(title: "문항 1", icon: "1.square.fill",width: 350)
+                    }
+                    NavigationLink(destination:QuestionView(headerTitle: questionTwo.title, questions: questionTwo)){
+                        MainBoxView(title: "문항 2", icon: "2.square.fill", width: 350)
+                    }
+                    NavigationLink(destination:QuestionView(headerTitle: questionThree.title, questions: questionThree)){
+                        MainBoxView(title: "자율 문항", icon: "3.square.fill",width: 350)
+                    }
                 }
                 Spacer()
             }

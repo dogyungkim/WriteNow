@@ -63,6 +63,8 @@ struct QuestionView: View {
                 .padding(10)
             } // Vstack
         }// Navigation View
+        .navigationTitle("Write Now")
+        .foregroundColor(Color("MainColor"))
     }
 }
 

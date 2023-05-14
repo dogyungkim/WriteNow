@@ -7,18 +7,16 @@
 
 import Foundation
 
+struct QuestionSet {
+    let title : String
+    let texts : [TextSet]
+}
 
-struct TextSet : Hashable{
+struct TextSet : Hashable {
     let keywords : String
     let examples : String
     init (_ keyword : String, _ example : String){
         self.keywords = keyword
         self.examples = example
     }
-}
-
-struct QuestionSet {
-    let title : String
-    let texts : [TextSet]
-    
 }

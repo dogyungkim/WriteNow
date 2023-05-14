@@ -10,7 +10,6 @@ import SwiftUI
 struct CollegeLetterResultView: View {
     @State var text : String = ""
     
-    var prompt : String = ""
     
     init(){
         UITextView.appearance().backgroundColor  = .clear
@@ -19,9 +18,6 @@ struct CollegeLetterResultView: View {
     var body: some View {
         VStack{
             //Header
-            Text("WriteNow")
-                .navigationTitle("WriteNow")
-
             TextEditor(text:$text)
                 .frame(maxWidth: 330, maxHeight: .greatestFiniteMagnitude)
                 .padding()

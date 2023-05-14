@@ -9,18 +9,19 @@ import SwiftUI
 
 struct MainBoxView: View {
     let title : String
+    let content : String
     let icon : String
     var width = 150.0
-    var heigt = 150.0
+    var height = 150.0
     var color = Color("MainColor")
-    var fill = true
-    init(title: String, icon: String, width: Double = 150.0, heigt: Double = 150.0, color: Color = Color("MainColor"), fill : Bool = true) {
+    
+    init(title: String, icon: String, width: Double = 150.0, height: Double = 150.0, color: Color = Color("MainColor"),content: String = "") {
         self.title = title
         self.icon = icon
         self.width = width
-        self.heigt = heigt
+        self.height = height
         self.color = color
-        self.fill = fill
+        self.content = content
     }
     var body: some View {
         ZStack{
@@ -34,9 +35,13 @@ struct MainBoxView: View {
                     .padding(.top)
                     .foregroundColor(color)
                     .bold()
+                    .font(.title3)
+                
+                Text(content)
+                    .foregroundColor(color)
             }
         }
-        .frame(width: width,height: heigt)
+        .frame(width: width,height: height)
         .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(color, lineWidth: 1)

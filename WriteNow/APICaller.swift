@@ -29,7 +29,9 @@ class APICaller: ObservableObject{
     func getResponse(_ prompt : String) async {
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "You are a helpful assistant."),
-            ChatMessage(role: .user, content: prompt),
+            ChatMessage(role: .user, content: #"I want you to write cover letter for me. The text in side "" will be the topic. Than I will give some keywords to reference"#),
+            ChatMessage(role: .assistant, content: "Ok. Please write the topic and the keywords"),
+            ChatMessage(role: .user, content: prompt)
         ]
         do{
             let result = try await openAI?.sendChat(with: chat)
