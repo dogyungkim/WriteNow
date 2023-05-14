@@ -15,7 +15,7 @@ struct TopHeaderView: View {
     
     var body: some View {
         ZStack{
-            Color(red: 0, green: 21/255, blue: 41/255)
+            Color("MainColor")
                 .background(.ultraThinMaterial)
                 .ignoresSafeArea()
             Text(title)

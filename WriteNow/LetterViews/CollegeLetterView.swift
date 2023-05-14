@@ -28,29 +28,19 @@ struct CollegeLetterView: View {
     
     let headerTitle = "진학 자소서"
     var body: some View {
-        TabView{
-            QuestionView(headerTitle: headerTitle, questions: questionOne)
-                .tabItem({
-                    Image(systemName: "1.square.fill")
-                    Text("문항 1")
-                })
-            QuestionView(headerTitle: headerTitle, questions: questionTwo)
-                .tabItem({
-                    Image(systemName: "2.square.fill")
-                    Text("문항 2")
-                })
-            QuestionView(headerTitle: headerTitle, questions: questionThree)
-                .tabItem({
-                    Image(systemName: "3.square.fill")
-                    Text("자율 문항")
-                })
-                
-        } // Tabview
-        .toolbarBackground(.red, for: .tabBar)
-        .accentColor(Color(red: 0, green: 21/255, blue: 41/255))
+        NavigationView{
+            VStack{
+                TopHeaderView("Write Now")
+                VStack{
+                    MainBoxView(title: "문항 1", icon: "1.square.fill", width: 350)
+                    MainBoxView(title: "문항 2", icon: "2.square.fill", width: 350)
+                    MainBoxView(title: "자율 문항", icon: "3.square.fill",width: 350)
+                }
+                Spacer()
+            }
+        }
         
     }
-        
 }
 
 struct CollegeLetterView_Previews: PreviewProvider {

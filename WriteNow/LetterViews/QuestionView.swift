@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct QuestionView: View {
+    //Header Title
     let headerTitle : String
+    //Questions
     let questions : QuestionSet
     
-    @State var first : String = ""
-    @State var second : String = ""
-    @State var third : String = ""
+    var bindText : [String]
+    
+    init(headerTitle : String, questions : QuestionSet){
+        self.headerTitle = headerTitle
+        self.questions = questions
+        self.bindText = []
+        for _ in questions.texts.indices{
+            bindText.append(String(""))
+        }
+    }
     
     var body: some View {
         NavigationView{
             VStack{
-                //Header
-                TopHeaderView(headerTitle)
-                //Body
                 VStack{
                     Text(questions.title)
                         .padding(20)
@@ -29,9 +35,9 @@ struct QuestionView: View {
                         .cornerRadius(30)
                     
                     VStack(alignment: .leading){
-                        ForEach (questions.texts, id: \.self) { question in
+                        ForEach (Array(questions.texts.enumerated()), id: \.element) { index, question in
                             QuestionTextView(
-                                text: $first,
+                                text: bindText[index],
                                 title:question.keywords,
                                 fieldText:question.examples
                             )
@@ -52,6 +58,7 @@ struct QuestionView: View {
                     .buttonStyle(.borderedProminent)
                     .tint(Color(red:22/255,green:119/255,blue:255/255))
                     .padding(.bottom, 30)
+                
                 }//Body Vstack
                 .padding(10)
             } // Vstack

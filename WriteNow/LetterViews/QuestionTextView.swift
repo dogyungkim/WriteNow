@@ -9,9 +9,11 @@ import SwiftUI
 
 struct QuestionTextView: View {
     
-    @Binding var text : String
+    @State var text : String = ""
+    
     let title : String
     let fieldText : String
+    
     var body: some View {
         Text(title)
             .font(.title3)

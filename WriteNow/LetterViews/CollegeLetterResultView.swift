@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CollegeLetterResultView: View {
     @State var text : String = ""
+    
     var prompt : String = ""
     
     init(){
@@ -18,7 +19,8 @@ struct CollegeLetterResultView: View {
     var body: some View {
         VStack{
             //Header
-           TopHeaderView("Write Now")
+            Text("WriteNow")
+                .navigationTitle("WriteNow")
 
             TextEditor(text:$text)
                 .frame(maxWidth: 330, maxHeight: .greatestFiniteMagnitude)
