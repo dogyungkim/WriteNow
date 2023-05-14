@@ -40,6 +40,7 @@ struct CollegeLetterView: View {
                     }
                     NavigationLink(destination:QuestionView(headerTitle: questionThree.title, questions: questionThree)){
                         MainBoxView(title: "자율 문항", icon: "3.square.fill",width: 350)
+                        
                     }
                 }
                 Spacer()
