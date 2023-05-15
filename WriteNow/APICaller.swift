@@ -29,7 +29,7 @@ class APICaller: ObservableObject{
     }
     
     func makePrompt(topic : String, keywords : [String]){
-        prompt = #"자기소개서의 topic은 \(topic)이고 " 키워드 들은"#
+        prompt = "자기소개서의 topic은 \"\(topic)\"이고 키워드 들은"
         for keyword in keywords{
             prompt.append(keyword)
         }

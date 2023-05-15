@@ -9,10 +9,11 @@ import SwiftUI
 
 struct QuestionTextView: View {
     
-    @Binding var text : String
+    @Binding var text : String 
     
     let title : String
     let fieldText : String
+    
     
     var body: some View {
         Text(title)
