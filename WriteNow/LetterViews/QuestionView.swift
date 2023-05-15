@@ -13,12 +13,12 @@ struct QuestionView: View {
     //Questions
     let questions : QuestionSet
     
-    @State var bindText : [String] = ["","",""]
-    @State var asd : String = ""
+    @State var bindText : [String]
     
     init(headerTitle : String, questions : QuestionSet){
         self.headerTitle = headerTitle
         self.questions = questions
+        self.bindText = []
     }
     
     var body: some View {
@@ -35,9 +35,6 @@ struct QuestionView: View {
                         ForEach(Array(zip(questions.texts.indices,questions.texts)), id: \.0){ index, element in
                             QuestionTextView(text: $bindText[index], title: element.keywords, fieldText: element.examples)
                         }
-                        Button("Chek"){
-                            print(bindText)
-                        }
                     }
                     .padding(20)
                     .background(Color(uiColor: .secondarySystemBackground))
@@ -45,7 +42,7 @@ struct QuestionView: View {
                     
                     Spacer()
                     //Create Button with Navigattion
-                    NavigationLink(destination: CollegeLetterResultView(topic:questions.title, keywords: ["a","b","cc"])){
+                    NavigationLink(destination: CollegeLetterResultView(topic:questions.title, keywords: bindText)){
                         Text("자소서 생성")
                             .frame(width: 300)
                             .foregroundColor(.white)
@@ -63,6 +60,11 @@ struct QuestionView: View {
         }// Navigation View
         .navigationTitle("Write Now")
         .foregroundColor(Color("MainColor"))
+        .onAppear{
+            for _ in questions.texts{
+                bindText.append("")
+            }
+        }
     }
 }
 

@@ -27,7 +27,20 @@ struct CollegeLetterView: View {
     )
     
     let headerTitle = "진학 자소서"
+    @State var index = 0
     var body: some View {
+        VStack{
+            TabBarView(index: $index)
+            TabView(selection: $index) {
+                ForEach(0..<3){ pageId in
+                    MainBoxView(title: "문항 1", icon: "1.square.fill",width: 350)
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
+        }
+        
+        /*
         NavigationView{
             VStack{
                 TopHeaderView("Write Now")
@@ -40,14 +53,13 @@ struct CollegeLetterView: View {
                     }
                     NavigationLink(destination:QuestionView(headerTitle: questionThree.title, questions: questionThree)){
                         MainBoxView(title: "자율 문항", icon: "3.square.fill",width: 350)
-                        
                     }
                 }
                 Spacer()
             }
         }
-        
-    }
+         */
+    }//body
 }
 
 struct CollegeLetterView_Previews: PreviewProvider {

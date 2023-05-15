@@ -20,6 +20,7 @@
 		93B5CE952A02B313001CEBCA /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B5CE942A02B313001CEBCA /* APICaller.swift */; };
 		93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFB8B22A0E87300088F220 /* MainBoxView.swift */; };
 		93BFB8B72A127B9C0088F220 /* QuestionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFB8B62A127B9C0088F220 /* QuestionTextView.swift */; };
+		93BFB8B92A1285A50088F220 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFB8B82A1285A50088F220 /* TabBarView.swift */; };
 		93F462962A0E0CB20084B8DF /* QuestionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F462952A0E0CB20084B8DF /* QuestionSet.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		93B5CE942A02B313001CEBCA /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		93BFB8B22A0E87300088F220 /* MainBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoxView.swift; sourceTree = "<group>"; };
 		93BFB8B62A127B9C0088F220 /* QuestionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTextView.swift; sourceTree = "<group>"; };
+		93BFB8B82A1285A50088F220 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		93F462952A0E0CB20084B8DF /* QuestionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 			children = (
 				9388F84B2A09379700E6F326 /* TopHeaderView.swift */,
 				93BFB8B22A0E87300088F220 /* MainBoxView.swift */,
+				93BFB8B82A1285A50088F220 /* TabBarView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				9388F8502A0D397D00E6F326 /* HomeView.swift in Sources */,
 				93BFB8B72A127B9C0088F220 /* QuestionTextView.swift in Sources */,
 				93B5CE952A02B313001CEBCA /* APICaller.swift in Sources */,
+				93BFB8B92A1285A50088F220 /* TabBarView.swift in Sources */,
 				93B5CE842A014FD4001CEBCA /* WriteNowApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
