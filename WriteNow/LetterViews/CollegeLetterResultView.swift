@@ -23,7 +23,6 @@ struct CollegeLetterResultView: View {
     }
     
     func getText() {
-        
         Task {
             await shared.getResponse()
         }
@@ -39,10 +38,12 @@ struct CollegeLetterResultView: View {
                 .cornerRadius(20)
                 .task {
                     shared.makePrompt(topic: topic, keywords: keywords)
-                    try? await self.shared.getResponse()
-                    text = shared.answer
+                    //try? await self.shared.getResponse()
+                    text = "HIIIIIII"//shared.answer
                 }
         }
+        .navigationTitle("Write Now")
+        .toolbarBackground(.teal)
     }
 }
 

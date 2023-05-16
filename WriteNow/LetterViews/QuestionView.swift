@@ -10,6 +10,7 @@ import SwiftUI
 struct QuestionView: View {
     //Header Title
     let headerTitle : String
+    
     //Questions
     let questions : QuestionSet
     
@@ -26,10 +27,12 @@ struct QuestionView: View {
             VStack{
                 VStack{
                     Text(questions.title)
+                        .frame(width: 370)
                         .padding(20)
                         .font(.title2)
                         .background(Color(uiColor: .secondarySystemBackground))
                         .cornerRadius(30)
+                        
                     
                     VStack(alignment: .leading){
                         ForEach(Array(zip(questions.texts.indices,questions.texts)), id: \.0){ index, element in
@@ -52,13 +55,11 @@ struct QuestionView: View {
                     .buttonStyle(.borderedProminent)
                     .tint(Color(red:22/255,green:119/255,blue:255/255))
                     .padding(.bottom, 30)
-                    
-                    
                 }//Body Vstack
                 .padding(10)
+                .padding(.top, 20)
             } // Vstack
         }// Navigation View
-        .navigationTitle("Write Now")
         .foregroundColor(Color("MainColor"))
         .onAppear{
             for _ in questions.texts{

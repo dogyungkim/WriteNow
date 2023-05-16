@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     @Binding var index: Int 
-    var titles = ["Home", "NewTab1","NewTab2","NewTab3","NewTab4"]
+    var titles = ["Home", "NewTab1","NewTab2"]
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView(.horizontal, showsIndicators: false){
@@ -22,7 +22,7 @@ struct TabBarView: View {
                                 }
                             }
                         if self.index == id {
-                            title.foregroundColor(.black)
+                            title.foregroundColor(.white)
                         } else {
                             title.foregroundColor(.gray)
                         }
