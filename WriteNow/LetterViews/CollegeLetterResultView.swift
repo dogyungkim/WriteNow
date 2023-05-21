@@ -36,7 +36,6 @@ struct CollegeLetterResultView: View {
     
     
     init(topic : String ,keywords : [String]){
-        UITextView.appearance().backgroundColor  = .clear
         self.topic = topic
         self.keywords = keywords
     }
@@ -47,6 +46,7 @@ struct CollegeLetterResultView: View {
         }
         
     }
+    
     
     var body: some View {
         VStack{

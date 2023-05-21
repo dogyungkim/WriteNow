@@ -34,7 +34,22 @@ class APICaller: ObservableObject{
             prompt.append(keyword)
         }
     }
-    
+    func generateKeywords(str : String) async {
+        print("Keywords Generates")
+        let chat: [ChatMessage] = [
+            ChatMessage(role: .system, content: "너는 좋은 assistant야"),
+            ChatMessage(role: .user, content: #"자기소개서를 작성하려고 합니다. 문항을 작성할테니 중요한 키워드를 10개만 배열로 작성해주세요. 코드만 써주세요"#),
+            ChatMessage(role: .assistant, content: "네. 문항을 입력하시면 배열로 작성하겠습니다. 코드 외에 다른 말은 하지 않겠습니다."),
+            ChatMessage(role: .user, content: str)
+        ]
+        do{
+            let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)
+            answer = result?.choices?.first?.message.content ?? "ERORR 입니다."
+            print(result?.choices?.first?.message.content ?? "")
+        } catch {
+            print("실패 ㅠㅠ")
+        }
+    }
     
     func getResponse() async {
         let chat: [ChatMessage] = [
