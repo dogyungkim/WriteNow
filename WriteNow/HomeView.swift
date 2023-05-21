@@ -21,10 +21,14 @@ struct HomeView: View {
                             selection = 1
                         }
                     MainBoxView(title: "취업 자소서", icon:"doc.plaintext" )
+                        .onTapGesture {
+                            selection = 2
+                        }
                 }
                 .padding(.top, 30)
                 Spacer()
             }
+            .padding(.bottom, 10)
             .tabItem({
                 Image(systemName: "house.fill")
                 Text("HomeView")
@@ -34,6 +38,11 @@ struct HomeView: View {
                     Image(systemName: "square.and.pencil")
                     Text("진학 자소서")
                 }).tag(1)
+            JobLetterView()
+                .tabItem({
+                    Image(systemName: "doc.plaintext")
+                    Text("취업 자소서")
+                }).tag(2)
         }//TabView
         .accentColor(Color("MainColor"))
         .animation(.easeOut(duration: 1), value: selection)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93419B012A15C24F0011A08B /* JobLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B002A15C24F0011A08B /* JobLetterView.swift */; };
+		93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B022A15C8890011A08B /* DynamicQuestionView.swift */; };
 		9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F8462A07E46800E6F326 /* CollegeLetterView.swift */; };
 		9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84B2A09379700E6F326 /* TopHeaderView.swift */; };
 		9388F84E2A0BE5FE00E6F326 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93419B002A15C24F0011A08B /* JobLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLetterView.swift; sourceTree = "<group>"; };
+		93419B022A15C8890011A08B /* DynamicQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicQuestionView.swift; sourceTree = "<group>"; };
 		9388F8462A07E46800E6F326 /* CollegeLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterView.swift; sourceTree = "<group>"; };
 		9388F84B2A09379700E6F326 /* TopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderView.swift; sourceTree = "<group>"; };
 		9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -54,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93419AFF2A15C1F10011A08B /* JobLetterView */ = {
+			isa = PBXGroup;
+			children = (
+				93419B002A15C24F0011A08B /* JobLetterView.swift */,
+			);
+			path = JobLetterView;
+			sourceTree = "<group>";
+		};
 		93B5CE772A014FD4001CEBCA = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +88,7 @@
 				93B5CE832A014FD4001CEBCA /* WriteNowApp.swift */,
 				9388F84F2A0D397D00E6F326 /* HomeView.swift */,
 				93B5CE852A014FD4001CEBCA /* ContentView.swift */,
+				93419AFF2A15C1F10011A08B /* JobLetterView */,
 				93F462972A0E0DF80084B8DF /* Model */,
 				93F462912A0E05390084B8DF /* LetterViews */,
 				93F462922A0E055B0084B8DF /* ViewComponents */,
@@ -98,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				93BFB8B62A127B9C0088F220 /* QuestionTextView.swift */,
+				93419B022A15C8890011A08B /* DynamicQuestionView.swift */,
 				9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */,
 				939E70AE2A09DA3400CAA503 /* CollegeLetterResultView.swift */,
 				9388F8462A07E46800E6F326 /* CollegeLetterView.swift */,
@@ -205,6 +219,8 @@
 				9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */,
 				93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */,
 				9388F84E2A0BE5FE00E6F326 /* QuestionView.swift in Sources */,
+				93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */,
+				93419B012A15C24F0011A08B /* JobLetterView.swift in Sources */,
 				939E70AF2A09DA3400CAA503 /* CollegeLetterResultView.swift in Sources */,
 				9388F8502A0D397D00E6F326 /* HomeView.swift in Sources */,
 				93BFB8B72A127B9C0088F220 /* QuestionTextView.swift in Sources */,

@@ -14,7 +14,6 @@ struct QuestionTextView: View {
     let title : String
     let fieldText : String
     
-    
     var body: some View {
         Text(title)
             .font(.title3)
@@ -22,5 +21,10 @@ struct QuestionTextView: View {
         TextField("ex) " + fieldText, text: $text)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding(.bottom, 10)
+            //for Demo Use
+            .onAppear{
+                text = fieldText
+            }
     }
+    
 }

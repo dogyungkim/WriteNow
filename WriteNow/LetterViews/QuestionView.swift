@@ -27,13 +27,11 @@ struct QuestionView: View {
             VStack{
                 VStack{
                     Text(questions.title)
-                        .frame(width: 370)
-                        .padding(20)
                         .font(.title2)
+                        .padding(15)
                         .background(Color(uiColor: .secondarySystemBackground))
                         .cornerRadius(30)
                         
-                    
                     VStack(alignment: .leading){
                         ForEach(Array(zip(questions.texts.indices,questions.texts)), id: \.0){ index, element in
                             QuestionTextView(text: $bindText[index], title: element.keywords, fieldText: element.examples)
@@ -53,14 +51,13 @@ struct QuestionView: View {
                         
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(Color(red:22/255,green:119/255,blue:255/255))
-                    .padding(.bottom, 30)
+                    .tint(Color("TintedMainColor"))
+                    .padding(.bottom, -10)
                 }//Body Vstack
                 .padding(10)
                 .padding(.top, 20)
             } // Vstack
         }// Navigation View
-        .foregroundColor(Color("MainColor"))
         .onAppear{
             for _ in questions.texts{
                 bindText.append("")
