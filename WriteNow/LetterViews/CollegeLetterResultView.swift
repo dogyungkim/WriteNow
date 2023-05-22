@@ -19,14 +19,24 @@ class TextCountMgr: ObservableObject {
 }
 
 struct CollegeLetterResultView: View {
+    
+    //For Texteditor
     @State var text : String = "" {
         didSet{
             viewState = false
         }
     }
-    @State var viewState : Bool = true
-    @State var progress : Double = 1
+    @State private var viewState : Bool = false
+    @State private var progress : Double = 1
     
+    //For edit Letter
+    @State private var askText : String = ""
+
+    //For picker
+    @State var selectedKeyword = "keyword"
+    var selectkeywords = ["강조", "삭제", " "]
+    
+    //For textCount
     @ObservedObject var textCountMgr = TextCountMgr()
     
     let shared = APICaller.shared
@@ -39,14 +49,6 @@ struct CollegeLetterResultView: View {
         self.topic = topic
         self.keywords = keywords
     }
-    
-    func getText() {
-        Task {
-            await shared.getResponse()
-        }
-        
-    }
-    
     
     var body: some View {
         VStack{
@@ -77,19 +79,58 @@ struct CollegeLetterResultView: View {
                                 .foregroundColor(.black)
                         }
                         .padding(.top)
+                        
+                        Divider()
+                            .padding(10)
+                        
+                        //To edit created Letter
+                        HStack{
+                            Picker("Select to edit", selection: $selectedKeyword){
+                                ForEach(selectkeywords, id: \.self) {
+                                    Text($0)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            .background(Color(UIColor.secondarySystemBackground))
+                            .cornerRadius(15)
+                            
+                            TextField("수정 하고 싶은 부분", text: $askText)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .frame(width: 300)
+                        }
+                        .padding(.bottom, 5)
+                        Button {
+                            viewState = true
+                            Task{
+                                await askGPT()
+                            }
+                        } label: {
+                            Text("자소서 수정")
+                                .frame(width: 300,height: 40)
+                                .background(Color("MainColor"))
+                                .foregroundColor(.white)
+                                .font(.title2)
+                                .cornerRadius(30)
+                        }
+
                     }
                 }
             }
             .task {
-                print("Asking to GPT")
-                shared.makePrompt(topic: topic, keywords: keywords)
-                try? await self.shared.getResponse()
-                textCountMgr.text = shared.answer
-                self.text = shared.answer
+               // await askGPT()
+                print("hello")
             }
         }
         .navigationTitle("Write Now")
         .toolbar(.hidden, for: .tabBar)
+    }
+    
+    func askGPT() async {
+        print("Asking to GPT")
+        shared.makePrompt(topic: topic, keywords: keywords)
+        try? await self.shared.getResponse()
+        textCountMgr.text = shared.answer
+        self.text = shared.answer
     }
 }
 

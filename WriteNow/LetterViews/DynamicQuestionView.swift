@@ -58,24 +58,24 @@ struct DynamicQuestionView: View {
             }
             
             //자소서 생성 버튼
-            Text("자소서 생성")
-                .frame(width: 300,height: 40)
-                .background(Color("MainColor"))
-                .foregroundColor(.white)
-                .font(.title2)
-                .cornerRadius(30)
-                .padding(.bottom, 30)
-                .onTapGesture {
-                    viewState.toggle()
-                }
-                .task {
+            Button {
+                Task {
                     try? await self.shared.generateKeywords(str: questions.texts[0].examples)
-                    for keyword in shared.answer {
-                        response.append(keyword)
-                    }
+                    response = shared.answer
+                    viewState = false
                 }
-            
-            
+            } label: {
+                Text("자소서 생성")
+                    .frame(width: 300,height: 40)
+                    .background(Color("MainColor"))
+                    .foregroundColor(.white)
+                    .font(.title2)
+                    .cornerRadius(30)
+                    .padding(.bottom, 30)
+                    .onTapGesture {
+                        viewState = true
+                    }
+            }
         }
     }
 }

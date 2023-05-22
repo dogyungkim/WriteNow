@@ -31,7 +31,7 @@ struct QuestionView: View {
                         .padding(15)
                         .background(Color(uiColor: .secondarySystemBackground))
                         .cornerRadius(30)
-                        
+                    
                     VStack(alignment: .leading){
                         ForEach(Array(zip(questions.texts.indices,questions.texts)), id: \.0){ index, element in
                             QuestionTextView(text: $bindText[index], title: element.keywords, fieldText: element.examples)

@@ -9,23 +9,35 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @State private var date = Date()
     @State var selection = 0
+    
     var body: some View {
         TabView(selection: $selection){
             //HomeView
             VStack{
+                //Header
                 TopHeaderView("Write Now")
+                //Main page
+                DatePicker(
+                        "Start Date",
+                        selection: $date,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(.graphical)
+                    .padding(10)
                 HStack{
                     MainBoxView(title: "진학 자소서", icon: "graduationcap")
                         .onTapGesture {
                             selection = 1
                         }
-                    MainBoxView(title: "취업 자소서", icon:"doc.plaintext" )
+                    MainBoxView(title: "취업 자소서", icon:"doc.plaintext")
                         .onTapGesture {
                             selection = 2
                         }
                 }
                 .padding(.top, 30)
+                
                 Spacer()
             }
             .padding(.bottom, 10)
