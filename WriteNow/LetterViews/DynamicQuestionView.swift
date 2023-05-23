@@ -18,15 +18,23 @@ struct DynamicQuestionView: View {
         didSet{
             viewState = false
             print(responses)
+            for _ in responses.indices{
+                bindText.append("")
+            }
         }
     }
+    
+    @State var bindText : [String] = []
   
     //Header Title
     let headerTitle : String
+    
     //For questionText
     var questions : QuestionSet
+    
     // For gpt API
     let shared = APICaller.shared
+    
     
     //Initializer
     init(headerTitle : String, questions : QuestionSet){
@@ -36,9 +44,11 @@ struct DynamicQuestionView: View {
     
     var body: some View{
         VStack{
-            //
+            //Top header
+            TopHeaderView("WriteNow")
             VStack{
-                QuestionTextView(text: $text, title: questions.texts[0].keywords, fieldText: questions.texts[0].examples)
+                Text(questions.texts[0].keywords)
+                TextField(questions.texts[0].examples, text: $text)
             }
             .frame(width: 370)
             .padding(20)
@@ -53,11 +63,14 @@ struct DynamicQuestionView: View {
                         .frame(height: 634)
                 } else {
                     Spacer()
-                    List{
-                        ForEach(responses, id : \.self) { response in
-                            Text(response)
+                    VStack{
+                        ForEach(Array(zip(responses.indices, responses)), id: \.0){ index, response in
+                            QuestionTextView(text: $bindText[index], title: response, fieldText: "")
+                            
                         }
                     }
+                    .background(Color(uiColor: .secondarySystemBackground))
+                    .cornerRadius(30)
                 }
             }
             
