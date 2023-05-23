@@ -1,16 +1,14 @@
 //
-//  CollegeLetterResultView.swift
+//  ResultView.swift
 //  WriteNow
 //
-//  Created by 김도경 on 2023/05/09.
+//  Created by 김도경 on 2023/05/23.
 //
 
 import SwiftUI
 
-
-struct CollegeLetterResultView: View {
-    
-    //For Texteditor
+struct ResultView: View {
+    //For Texteditor View State
     @State var text : String = "" {
         didSet{
             viewState = false
@@ -31,12 +29,10 @@ struct CollegeLetterResultView: View {
     
     let shared = APICaller.shared
     
-    let topic : String
     let keywords : [String]
     
     
-    init(topic : String ,keywords : [String]){
-        self.topic = topic
+    init(keywords : [String]){
         self.keywords = keywords
     }
     
@@ -108,21 +104,14 @@ struct CollegeLetterResultView: View {
                 }
             }
             .task {
-                await askGPT()
-                print("hello")
+                try? await textCountMgr.text = shared.generateNormal(str: "")
+                print(textCountMgr.text)
             }
         }
         .navigationTitle("Write Now")
         .toolbar(.hidden, for: .tabBar)
     }
     
-    func askGPT() async {
-        print("Asking to GPT")
-        shared.makePrompt(topic: topic, keywords: keywords)
-        try? await self.shared.getResponse()
-        textCountMgr.text = shared.answer
-        self.text = shared.answer
-    }
     func editGPT() async {
         try? await self.shared.editResponse(str: askText + "부분을" + selectedKeyword + "해줘")
         textCountMgr.text = shared.answer
@@ -132,8 +121,8 @@ struct CollegeLetterResultView: View {
 
 }
 
-struct CollegeLetterResultView_Previews: PreviewProvider {
+struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        CollegeLetterResultView(topic: "문항1 입니다.!!!", keywords: ["컴퓨터 공학과,IT동아리를 해본적이 있음, 지식을 나누고 더 나은 삶을 사는 것이 진정한 배움의 길"])
+        ResultView(keywords: ["",""])
     }
 }

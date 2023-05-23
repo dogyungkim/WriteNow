@@ -50,7 +50,10 @@ struct HomeView: View {
                     Image(systemName: "square.and.pencil")
                     Text("진학 자소서")
                 }).tag(1)
-            JobLetterView()
+            DynamicQuestionView(headerTitle: "취업 자소서",
+                                questions: QuestionSet(
+                                    title: "",
+                                    texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다","본인의 성장과정을 간략히 기술하되 현재의 자신에게 가장 큰 영향을 끼친 사건, 인물 등을 포함하여 기술하시기 바랍니다")]))
                 .tabItem({
                     Image(systemName: "doc.plaintext")
                     Text("취업 자소서")

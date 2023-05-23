@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct QuestionView: View {
     //Header Title
     let headerTitle : String
@@ -44,15 +46,9 @@ struct QuestionView: View {
                     Spacer()
                     //Create Button with Navigattion
                     NavigationLink(destination: CollegeLetterResultView(topic:questions.title, keywords: bindText)){
-                        Text("자소서 생성")
-                            .frame(width: 300)
-                            .foregroundColor(.white)
-                            .font(.title2)
+                       MyButton("자소서생성")
                         
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(Color("TintedMainColor"))
-                    .padding(.bottom, -10)
                 }//Body Vstack
                 .padding(10)
                 .padding(.top, 20)

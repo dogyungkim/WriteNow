@@ -35,11 +35,32 @@ class APICaller: ObservableObject{
             prompt.append(keyword)
         }
     }
+    // For normal Questions
+    func generateNormal(str : String) async throws -> String {
+        print("API: Normal Generates")
+        var send : String
+        
+        let chat: [ChatMessage] = [
+            ChatMessage(role: .system, content: "너는 좋은 assistant야"),
+            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. Better if you give more than 4 keywords. no other explanation except the code. ")
+        ]
+        do{
+            let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)
+            send = result?.choices?.first?.message.content ?? "ERORR 입니다."
+            print(result?.choices?.first?.message.content ?? "")
+        } catch {
+            send = "Error 입니다."
+            print("실패 ㅠㅠ")
+        }
+        return send
+    }
+    
+    // For dynamic Questions
     func generateKeywords(str : String) async {
         print("API: Keywords Generates")
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
-            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. Better if you give more than 4 keywords. no other explanation except the code"),
+            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. Better if you give more than 4 keywords. no other explanation except the code. ")
         ]
         do{
             let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)
@@ -49,7 +70,8 @@ class APICaller: ObservableObject{
             print("실패 ㅠㅠ")
         }
     }
-    
+
+    // For static Questions
     func getResponse() async {
         print("API: Getting Response")
         let chat: [ChatMessage] = [
@@ -67,8 +89,7 @@ class APICaller: ObservableObject{
             print("실패 ㅠㅠ")
         }
     }
-    
-    //자소서 수정 func
+    // For editing Letter
     func editResponse(str : String) async {
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),

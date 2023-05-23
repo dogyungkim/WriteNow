@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933A5ECF2A1D086B00E3C8EE /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ECE2A1D086B00E3C8EE /* ResultView.swift */; };
+		933A5ED12A1D089B00E3C8EE /* TextCountMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED02A1D089B00E3C8EE /* TextCountMgr.swift */; };
+		933A5ED32A1D0ED800E3C8EE /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED22A1D0ED800E3C8EE /* MyButton.swift */; };
 		93419B012A15C24F0011A08B /* JobLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B002A15C24F0011A08B /* JobLetterView.swift */; };
 		93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B022A15C8890011A08B /* DynamicQuestionView.swift */; };
-		93572B4B2A1C8F31001381E6 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93572B4A2A1C8F31001381E6 /* Test.swift */; };
 		9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F8462A07E46800E6F326 /* CollegeLetterView.swift */; };
 		9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84B2A09379700E6F326 /* TopHeaderView.swift */; };
 		9388F84E2A0BE5FE00E6F326 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */; };
@@ -28,9 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		933A5ECE2A1D086B00E3C8EE /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		933A5ED02A1D089B00E3C8EE /* TextCountMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCountMgr.swift; sourceTree = "<group>"; };
+		933A5ED22A1D0ED800E3C8EE /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		93419B002A15C24F0011A08B /* JobLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLetterView.swift; sourceTree = "<group>"; };
 		93419B022A15C8890011A08B /* DynamicQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicQuestionView.swift; sourceTree = "<group>"; };
-		93572B4A2A1C8F31001381E6 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		9388F8462A07E46800E6F326 /* CollegeLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterView.swift; sourceTree = "<group>"; };
 		9388F84B2A09379700E6F326 /* TopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderView.swift; sourceTree = "<group>"; };
 		9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -113,7 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				93419B022A15C8890011A08B /* DynamicQuestionView.swift */,
-				93572B4A2A1C8F31001381E6 /* Test.swift */,
+				933A5ED22A1D0ED800E3C8EE /* MyButton.swift */,
+				933A5ECE2A1D086B00E3C8EE /* ResultView.swift */,
 				9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */,
 				939E70AE2A09DA3400CAA503 /* CollegeLetterResultView.swift */,
 				9388F8462A07E46800E6F326 /* CollegeLetterView.swift */,
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				93F462952A0E0CB20084B8DF /* QuestionSet.swift */,
+				933A5ED02A1D089B00E3C8EE /* TextCountMgr.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,9 +224,11 @@
 			files = (
 				93F462962A0E0CB20084B8DF /* QuestionSet.swift in Sources */,
 				93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */,
-				93572B4B2A1C8F31001381E6 /* Test.swift in Sources */,
 				9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */,
 				9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */,
+				933A5ECF2A1D086B00E3C8EE /* ResultView.swift in Sources */,
+				933A5ED12A1D089B00E3C8EE /* TextCountMgr.swift in Sources */,
+				933A5ED32A1D0ED800E3C8EE /* MyButton.swift in Sources */,
 				93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */,
 				9388F84E2A0BE5FE00E6F326 /* QuestionView.swift in Sources */,
 				93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */,
