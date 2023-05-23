@@ -14,11 +14,13 @@ struct DynamicQuestionView: View {
     @State var text : String = ""
     
     //For responsetext
-    @State var response : String = "" {
+    @State var responses : [String] = [] {
         didSet{
             viewState = false
+            print(responses)
         }
     }
+  
     //Header Title
     let headerTitle : String
     //For questionText
@@ -50,19 +52,22 @@ struct DynamicQuestionView: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: Color("MainColor")))
                         .frame(height: 634)
                 } else {
-                    TextEditor(text: $response)
-                        .frame(maxWidth: 380, maxHeight: .greatestFiniteMagnitude)
-                        .padding()
-                        .border(.black,width: 1)
+                    Spacer()
+                    List{
+                        ForEach(responses, id : \.self) { response in
+                            Text(response)
+                        }
+                    }
                 }
             }
             
             //자소서 생성 버튼
             Button {
                 Task {
+                    viewState = true
+                    print("Button Clicked")
                     try? await self.shared.generateKeywords(str: questions.texts[0].examples)
-                    response = shared.answer
-                    viewState = false
+                    responses = changeResponse()
                 }
             } label: {
                 Text("자소서 생성")
@@ -72,11 +77,15 @@ struct DynamicQuestionView: View {
                     .font(.title2)
                     .cornerRadius(30)
                     .padding(.bottom, 30)
-                    .onTapGesture {
-                        viewState = true
-                    }
             }
         }
+    }
+    
+    func changeResponse() -> [String]{
+        var st = shared.keywords
+        let realCharacterSet: Set<Character> = Set(#"["]'"#)
+        st.removeAll(where: realCharacterSet.contains)
+        return st.components(separatedBy: ",")
     }
 }
         
@@ -86,6 +95,6 @@ struct DynamicQuestionView_Previews: PreviewProvider {
         DynamicQuestionView(headerTitle: "진학 자소서",
                             questions: QuestionSet(
                                 title: "",
-                                texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다","삼성전자를 지원한 이유와 입사 후 회사에서 이루고 싶은 꿈을 기술하십시오")]))
+                                texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다","지원 직무 관련 프로젝트/과제 중 기술적으로 가장 어려웠던 과제와 해결방안에 대해 구체적으로 서술하여 주시기 바랍니다")]))
     }
 }

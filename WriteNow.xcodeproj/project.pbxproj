@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		93419B012A15C24F0011A08B /* JobLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B002A15C24F0011A08B /* JobLetterView.swift */; };
 		93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B022A15C8890011A08B /* DynamicQuestionView.swift */; };
+		93572B4B2A1C8F31001381E6 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93572B4A2A1C8F31001381E6 /* Test.swift */; };
 		9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F8462A07E46800E6F326 /* CollegeLetterView.swift */; };
 		9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84B2A09379700E6F326 /* TopHeaderView.swift */; };
 		9388F84E2A0BE5FE00E6F326 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		93419B002A15C24F0011A08B /* JobLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLetterView.swift; sourceTree = "<group>"; };
 		93419B022A15C8890011A08B /* DynamicQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicQuestionView.swift; sourceTree = "<group>"; };
+		93572B4A2A1C8F31001381E6 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		9388F8462A07E46800E6F326 /* CollegeLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterView.swift; sourceTree = "<group>"; };
 		9388F84B2A09379700E6F326 /* TopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderView.swift; sourceTree = "<group>"; };
 		9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				93419B022A15C8890011A08B /* DynamicQuestionView.swift */,
+				93572B4A2A1C8F31001381E6 /* Test.swift */,
 				9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */,
 				939E70AE2A09DA3400CAA503 /* CollegeLetterResultView.swift */,
 				9388F8462A07E46800E6F326 /* CollegeLetterView.swift */,
@@ -215,6 +218,7 @@
 			files = (
 				93F462962A0E0CB20084B8DF /* QuestionSet.swift in Sources */,
 				93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */,
+				93572B4B2A1C8F31001381E6 /* Test.swift in Sources */,
 				9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */,
 				9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */,
 				93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */,

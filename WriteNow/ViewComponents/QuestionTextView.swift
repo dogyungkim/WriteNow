@@ -15,16 +15,16 @@ struct QuestionTextView: View {
     let fieldText : String
     
     var body: some View {
+        
         Text(title)
             .font(.title3)
             .padding(.bottom, 1)
         TextField("ex) " + fieldText, text: $text)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding(.bottom, 10)
-            //for Demo Use
+        //for Demo Use
             .onAppear{
                 text = fieldText
             }
     }
-    
 }

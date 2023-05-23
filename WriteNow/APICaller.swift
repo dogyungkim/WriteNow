@@ -10,6 +10,7 @@ import OpenAISwift
 
 class APICaller: ObservableObject{
     @Published var answer : String = ""
+    @Published var keywords : String = ""
     
     static let shared = APICaller()
     private var openAI : OpenAISwift?
@@ -35,16 +36,14 @@ class APICaller: ObservableObject{
         }
     }
     func generateKeywords(str : String) async {
-        print("Keywords Generates")
+        print("API: Keywords Generates")
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
-            ChatMessage(role: .user, content: #"자기소개서를 작성하려고 합니다. 문항을 작성할테니 중요한 키워드를 10개만 배열로 작성해주세요. 코드만 써주세요"#),
-            ChatMessage(role: .assistant, content: "네. 문항을 입력하시면 배열로 작성하겠습니다. 코드 외에 다른 말은 하지 않겠습니다."),
-            ChatMessage(role: .user, content: str)
+            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. Better if you give more than 4 keywords. no other explanation except the code"),
         ]
         do{
             let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)
-            answer = result?.choices?.first?.message.content ?? "ERORR 입니다."
+            keywords = result?.choices?.first?.message.content ?? "ERORR 입니다."
             print(result?.choices?.first?.message.content ?? "")
         } catch {
             print("실패 ㅠㅠ")
@@ -52,11 +51,30 @@ class APICaller: ObservableObject{
     }
     
     func getResponse() async {
+        print("API: Getting Response")
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
             ChatMessage(role: .user, content: #"대학입시를 위한 자기소개서를 쓰려고 해. 내가 "" 사이에 문항을 입력할께. 그리고 자소서에 참고할 키워드들을 입력할께."#),
             ChatMessage(role: .assistant, content: "네. 문항과 키워드를 입력하시면, 자기소개서를 작성하겠습니다."),
             ChatMessage(role: .user, content: self.prompt)
+        ]
+        do{
+            let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)
+            answer = result?.choices?.first?.message.content ?? "ERORR 입니다."
+            print(result?.choices?.first?.message.content ?? "")
+        } catch {
+            answer = "Time Out 다시 시도해보세요!"
+            print("실패 ㅠㅠ")
+        }
+    }
+    
+    //자소서 수정 func
+    func editResponse(str : String) async {
+        let chat: [ChatMessage] = [
+            ChatMessage(role: .system, content: "너는 좋은 assistant야"),
+            ChatMessage(role: .user, content: "작성해준 " + answer + "이 자소서를 수정 하고 싶어"),
+            ChatMessage(role: .assistant, content: "네. 어떤 부분을 수정하고 싶으신가요? 알려주시면 수정해서 다시 작성해드리도록 하겠습니다."),
+            ChatMessage(role: .user, content: str )
         ]
         do{
             let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)

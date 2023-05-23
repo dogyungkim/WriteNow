@@ -26,7 +26,7 @@ struct CollegeLetterResultView: View {
             viewState = false
         }
     }
-    @State private var viewState : Bool = false
+    @State private var viewState : Bool = true
     @State private var progress : Double = 1
     
     //For edit Letter
@@ -34,7 +34,7 @@ struct CollegeLetterResultView: View {
 
     //For picker
     @State var selectedKeyword = "keyword"
-    var selectkeywords = ["강조", "삭제", " "]
+    var selectkeywords = ["강조", "삭제"]
     
     //For textCount
     @ObservedObject var textCountMgr = TextCountMgr()
@@ -99,10 +99,11 @@ struct CollegeLetterResultView: View {
                                 .frame(width: 300)
                         }
                         .padding(.bottom, 5)
+                        
                         Button {
                             viewState = true
                             Task{
-                                await askGPT()
+                                await editGPT()
                             }
                         } label: {
                             Text("자소서 수정")
@@ -117,7 +118,7 @@ struct CollegeLetterResultView: View {
                 }
             }
             .task {
-               // await askGPT()
+                await askGPT()
                 print("hello")
             }
         }
@@ -132,6 +133,13 @@ struct CollegeLetterResultView: View {
         textCountMgr.text = shared.answer
         self.text = shared.answer
     }
+    func editGPT() async {
+        try? await self.shared.editResponse(str: askText + "부분을" + selectedKeyword + "해줘")
+        textCountMgr.text = shared.answer
+        self.text = shared.answer
+    }
+    
+
 }
 
 struct CollegeLetterResultView_Previews: PreviewProvider {
