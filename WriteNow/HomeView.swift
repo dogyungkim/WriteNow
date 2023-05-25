@@ -46,6 +46,7 @@ struct HomeView: View {
                 Image(systemName: "house.fill")
                 Text("HomeView")
             }).tag(0)
+            /*
             DynamicQuestionView(headerTitle: "취업 자소서",
                                 questions: QuestionSet(
                                     title: "",
@@ -59,6 +60,7 @@ struct HomeView: View {
                     Image(systemName: "square.and.pencil")
                     Text("진학 자소서")
                 }).tag(2)
+             */
             
         }//TabView
         .accentColor(Color("MainColor"))

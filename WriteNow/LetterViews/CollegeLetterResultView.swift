@@ -86,7 +86,6 @@ struct CollegeLetterResultView: View {
                             
                             TextField("수정 하고 싶은 부분", text: $askText)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .frame(width: 300)
                         }
                         .padding(.bottom, 5)
                         
