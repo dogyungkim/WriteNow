@@ -29,12 +29,13 @@ struct ResultView: View {
     
     let shared = APICaller.shared
     
-    let keywords : [String]
-    
-    
-    init(keywords : [String]){
-        self.keywords = keywords
+    @Binding var str : String {
+        didSet{
+            text = str
+            textCountMgr.text = str
+        }
     }
+    
     
     var body: some View {
         VStack{
@@ -49,11 +50,13 @@ struct ResultView: View {
                     }
                 } else {
                     VStack{
+                        //Created letter and edit
                         TextEditor(text:$textCountMgr.text)
                             .frame(maxWidth: 380, maxHeight: .greatestFiniteMagnitude)
                             .padding()
                             .border(.black,width: 2)
                         Spacer()
+                        //Character Counter
                         HStack(){
                             Text("공백 포함 = " + textCountMgr.counted)
                                 .font(.title3)
@@ -103,10 +106,6 @@ struct ResultView: View {
                     }
                 }
             }
-            .task {
-                try? await textCountMgr.text = shared.generateNormal(str: "")
-                print(textCountMgr.text)
-            }
         }
         .navigationTitle("Write Now")
         .toolbar(.hidden, for: .tabBar)
@@ -121,8 +120,3 @@ struct ResultView: View {
 
 }
 
-struct ResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResultView(keywords: ["",""])
-    }
-}

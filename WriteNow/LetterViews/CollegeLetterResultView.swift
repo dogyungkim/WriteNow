@@ -108,7 +108,9 @@ struct CollegeLetterResultView: View {
                 }
             }
             .task {
-                await askGPT()
+                //await askGPT()
+                TextCountMgr().text = "테스트"
+                self.text = "테스트"
                 print("hello")
             }
         }

@@ -27,14 +27,15 @@ struct HomeView: View {
                     .datePickerStyle(.graphical)
                     .padding(10)
                 HStack{
-                    MainBoxView(title: "진학 자소서", icon: "graduationcap")
+                    MainBoxView(title: "취업 자소서", icon:"doc.plaintext")
                         .onTapGesture {
                             selection = 1
                         }
-                    MainBoxView(title: "취업 자소서", icon:"doc.plaintext")
+                    MainBoxView(title: "진학 자소서", icon: "graduationcap")
                         .onTapGesture {
                             selection = 2
                         }
+                    
                 }
                 .padding(.top, 30)
                 
@@ -45,19 +46,20 @@ struct HomeView: View {
                 Image(systemName: "house.fill")
                 Text("HomeView")
             }).tag(0)
-           CollegeLetterView()
-                .tabItem({
-                    Image(systemName: "square.and.pencil")
-                    Text("진학 자소서")
-                }).tag(1)
             DynamicQuestionView(headerTitle: "취업 자소서",
                                 questions: QuestionSet(
                                     title: "",
                                     texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다","본인의 성장과정을 간략히 기술하되 현재의 자신에게 가장 큰 영향을 끼친 사건, 인물 등을 포함하여 기술하시기 바랍니다")]))
+            .tabItem({
+                Image(systemName: "doc.plaintext")
+                Text("취업 자소서")
+            }).tag(1)
+           CollegeLetterView()
                 .tabItem({
-                    Image(systemName: "doc.plaintext")
-                    Text("취업 자소서")
+                    Image(systemName: "square.and.pencil")
+                    Text("진학 자소서")
                 }).tag(2)
+            
         }//TabView
         .accentColor(Color("MainColor"))
         .animation(.easeOut(duration: 1), value: selection)

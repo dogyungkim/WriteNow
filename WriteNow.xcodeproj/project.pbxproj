@@ -117,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				93419B022A15C8890011A08B /* DynamicQuestionView.swift */,
-				933A5ED22A1D0ED800E3C8EE /* MyButton.swift */,
 				933A5ECE2A1D086B00E3C8EE /* ResultView.swift */,
 				9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */,
 				939E70AE2A09DA3400CAA503 /* CollegeLetterResultView.swift */,
@@ -129,6 +128,7 @@
 		93F462922A0E055B0084B8DF /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				933A5ED22A1D0ED800E3C8EE /* MyButton.swift */,
 				93BFB8B62A127B9C0088F220 /* QuestionTextView.swift */,
 				9388F84B2A09379700E6F326 /* TopHeaderView.swift */,
 				93BFB8B22A0E87300088F220 /* MainBoxView.swift */,

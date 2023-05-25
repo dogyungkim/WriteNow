@@ -37,12 +37,12 @@ class APICaller: ObservableObject{
     }
     // For normal Questions
     func generateNormal(str : String) async throws -> String {
-        print("API: Normal Generates")
+        print("API: Normal Generates :" + str)
         var send : String
         
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
-            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. Better if you give more than 4 keywords. no other explanation except the code. ")
+            ChatMessage(role: .user, content: str)
         ]
         do{
             let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)
@@ -60,7 +60,7 @@ class APICaller: ObservableObject{
         print("API: Keywords Generates")
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
-            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. Better if you give more than 4 keywords. no other explanation except the code. ")
+            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. At least 4 keywords is needed. no other explanation except the code. ")
         ]
         do{
             let result = try await openAI?.sendChat(with: chat,maxTokens: 1000)

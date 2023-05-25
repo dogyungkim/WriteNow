@@ -13,6 +13,7 @@ struct DynamicQuestionView: View {
     @State var progress : Double = 100
     @State var text : String = ""
     @State var createState : Bool = true
+    @State var selection : Int? = 0
     
     //For responsetext
     @State var responses : [String] = [] {
@@ -20,12 +21,12 @@ struct DynamicQuestionView: View {
             viewState = false
             print(responses)
             for _ in responses.indices{
-                bindText.append("")
+                bindTexts.append("")
             }
         }
     }
     
-    @State var bindText : [String] = []
+    @State var bindTexts : [String] = []
     
     //Header Title
     let headerTitle : String
@@ -35,6 +36,9 @@ struct DynamicQuestionView: View {
     
     // For gpt API
     let shared = APICaller.shared
+    
+    //To send result
+    @State var sendText : String = ""
     
     
     //Initializer
@@ -47,29 +51,34 @@ struct DynamicQuestionView: View {
         
         NavigationStack{
             //Top header
-            TopHeaderView("WriteNow")
+            TopHeaderView("Write Now")
             VStack{
                 Text(questions.texts[0].keywords)
                 TextField(questions.texts[0].examples, text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
             }
-            .frame(width: 370)
             .padding(20)
             .font(.title2)
             .background(Color(uiColor: .secondarySystemBackground))
             .cornerRadius(30)
-            
+            .onAppear{
+                self.text = questions.texts.first?.examples ?? ""
+            }
             Spacer()
             ZStack{
                 if viewState {
-                    ProgressView(value: progress)
-                        .progressViewStyle(CircularProgressViewStyle(tint: Color("MainColor")))
+                    VStack{
+                        ProgressView(value: progress)
+                            .progressViewStyle(CircularProgressViewStyle(tint: Color("MainColor")))
+                        Text("키워드 생성 중")
+                    }
                 } else {
                     Spacer()
                     
                     ScrollView{
                         VStack{
                             ForEach(Array(zip(responses.indices, responses)), id: \.0){ index, response in
-                                QuestionTextView(text: $bindText[index], title: response, fieldText: "")
+                                QuestionTextView(text: $bindTexts[index], title: response, fieldText: "")
                                     .frame(maxWidth: 410)
                                 
                             }
@@ -96,8 +105,26 @@ struct DynamicQuestionView: View {
                     MyButton("키워드 생성")
                 }
             } else {
-                NavigationLink(destination: ResultView(keywords: responses)) {
-                    MyButton("자소서 생성")
+                NavigationLink (destination: ResultView(str: $sendText), tag:1, selection: $selection){
+                    Button {
+                        print("자소서 생성 버튼 clicked")
+                        for index in bindTexts.indices {
+                            sendText += responses[index] + bindTexts[index]
+                        }
+                        print("")
+                        Task{
+                            selection = 1
+                            try? sendText = await shared.generateNormal(str: sendText)
+                        }
+                    } label: {
+                        Text("자소서 생성")
+                            .frame(width: 300,height: 40)
+                            .background(Color("MainColor"))
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .cornerRadius(30)
+                            .padding(.bottom, 30)
+                    }
                 }
             }// if Button
         }
