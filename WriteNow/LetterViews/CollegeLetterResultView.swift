@@ -24,20 +24,14 @@ struct CollegeLetterResultView: View {
     
     //For picker
     @State var selectedKeyword = "keyword"
-    var selectkeywords = ["강조", "삭제"]
-    
-    //For textCount
-    @ObservedObject var textCountMgr = TextCountMgr()
-    
-    let shared = APICaller.shared
-    
-    let topic : String
+
     let keywords : [String]
     
+    @ObservedObject var viewModel : CollegeLetterViewModel
     
-    init(topic : String ,keywords : [String]){
-        self.topic = topic
+    init(keywords : [String], viewModel : CollegeLetterViewModel){
         self.keywords = keywords
+        self.viewModel  = viewModel
     }
     
     var body: some View {
@@ -47,82 +41,22 @@ struct CollegeLetterResultView: View {
                    Progressing(progress: progress)
                 } else {
                     VStack{
-                        TextEditor(text:$textCountMgr.text)
-                            .frame(maxWidth: 380, maxHeight: .greatestFiniteMagnitude)
-                            .padding()
-                            .border(.black,width: 2)
-                        Spacer()
-                        HStack(){
-                            Text("공백 포함 = " + textCountMgr.counted)
-                                .font(.title3)
-                                .foregroundColor(.black)
-                            Divider()
-                                .frame(height: 20)
-                            Text("공백 미포함 = " + textCountMgr.noSpaceCount)
-                                .font(.title3)
-                                .foregroundColor(.black)
-                        }
-                        .padding(.top)
-                        
+                        TextEditView(text: viewModel.resultText, counted: viewModel.textCount, noSpaceCounted: viewModel.noSpaceTextCount)
                         Divider()
                             .padding(10)
                         
                         //To edit created Letter
-                        HStack{
-                            Picker("Select to edit", selection: $selectedKeyword){
-                                ForEach(selectkeywords, id: \.self) {
-                                    Text($0)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .background(Color(UIColor.secondarySystemBackground))
-                            .cornerRadius(15)
-                            
-                            TextField("수정 하고 싶은 부분", text: $askText)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                        }
-                        .padding(.bottom, 5)
-                        
-                        Button {
-                            viewState = true
-                            Task{
-                                await editGPT()
-                            }
-                        } label: {
-                            Text("자소서 수정")
-                                .frame(width: 300,height: 40)
-                                .background(Color("MainColor"))
-                                .foregroundColor(.white)
-                                .font(.title2)
-                                .cornerRadius(30)
-                        }
-                        
+                        KeywordView(selectedKeyword: $selectedKeyword,askText: $askText)
+                        MyButton("자소서 수정")
                     }
                 }
-            }
-            .task {
-                //await askGPT()
-                TextCountMgr().text = "테스트"
-                self.text = "테스트"
-                print("hello")
             }
         }
         .navigationTitle("Write Now")
         .toolbar(.hidden, for: .tabBar)
     }
     
-    func askGPT() async {
-        print("Asking to GPT")
-        shared.makePrompt(topic: topic, keywords: keywords)
-        try? await self.shared.getResponse()
-        textCountMgr.text = shared.answer
-        self.text = shared.answer
-    }
-    func editGPT() async {
-        try? await self.shared.editResponse(str: askText + "부분을" + selectedKeyword + "해줘")
-        textCountMgr.text = shared.answer
-        self.text = shared.answer
-    }
+    
     struct Progressing : View {
         var progress : Double
         var body : some View{
@@ -137,10 +71,51 @@ struct CollegeLetterResultView: View {
         }
     }
 
-}
-
-struct CollegeLetterResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        CollegeLetterResultView(topic: "문항1 입니다.!!!", keywords: ["컴퓨터 공학과,IT동아리를 해본적이 있음, 지식을 나누고 더 나은 삶을 사는 것이 진정한 배움의 길"])
+    struct TextEditView : View {
+        @State var text : String
+        var counted : String
+        var noSpaceCounted : String
+        
+        var body: some View{
+            TextEditor(text: $text)
+                .frame(maxWidth: 380, maxHeight: .greatestFiniteMagnitude)
+                .padding()
+                .border(.black,width: 2)
+            Spacer()
+            HStack(){
+                Text("공백 포함 = " + counted)
+                    .font(.title3)
+                    .foregroundColor(.black)
+                Divider()
+                    .frame(height: 20)
+                Text("공백 미포함 = " + noSpaceCounted)
+                    .font(.title3)
+                    .foregroundColor(.black)
+            }
+            .padding(.top)
+        }
     }
+    
+    struct KeywordView : View {
+        @Binding var selectedKeyword : String
+        @Binding var askText : String
+        var selectkeywords = ["강조", "삭제"]
+        var body: some View {
+            HStack{
+                Picker("Select to edit", selection: $selectedKeyword){
+                    ForEach(selectkeywords, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.menu)
+                .background(Color(UIColor.secondarySystemBackground))
+                .cornerRadius(15)
+                
+                TextField("수정 하고 싶은 부분", text: $askText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            .padding(.bottom, 5)
+        }
+    }
+
 }

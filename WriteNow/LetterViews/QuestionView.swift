@@ -7,31 +7,33 @@
 
 import SwiftUI
 
-
-
 struct QuestionView: View {
     
-    var viewModel : CollegeLetterViewModel
+    @ObservedObject var viewModel : CollegeLetterViewModel
     
-    @State var bindText : [String]
+    @State var text : String = ""
     
     init(questions : QuestionSet){
         viewModel = CollegeLetterViewModel(questionSet: questions)
-        self.bindText = []
-        for _ in viewModel.questionSet.texts{
-            bindText.append("")
-        }
     }
     
+    var bindText : String = ""
+     
     var body: some View {
         NavigationView{
             VStack{
                 VStack{
-                    MyText(title: viewModel.headerTitle)
-                    
+                    MyText(title: viewModel.questionSet.title)
                     VStack(alignment: .leading){
-                        ForEach(0..<viewModel.questionCount){ index in
-                            QuestionTextView(text: $bindText[index], title: viewModel.questionSet.texts[index].keywords, fieldText: viewModel.questionSet.texts[index].examples)
+                        ForEach(Array(zip(viewModel.questionSet.texts.indices, viewModel.questionSet.texts)), id: \.0){ index, text in
+                            VStack{
+                                Text(text.keywords)
+                                    .font(.title3)
+                                    .padding(.bottom, 1)
+                                TextField("ex)" + text.examples, text: $viewModel.bindText[index])
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding(.bottom, 10)
+                            }
                         }
                     }
                     .padding(20)
@@ -39,11 +41,14 @@ struct QuestionView: View {
                     .cornerRadius(30)
                     
                     Spacer()
+                    
                     //Create Button with Navigattion
-                    NavigationLink(destination: CollegeLetterResultView(keywords: bindText)){
+                    /*
+                    NavigationLink(destination: CollegeLetterResultView(keywords: bindText,viewModel: self.viewModel)){
                        MyButton("자소서생성")
                         
                     }
+                     */
                 }//Body Vstack
                 .padding(10)
                 .padding(.top, 20)

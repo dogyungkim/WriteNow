@@ -22,7 +22,7 @@ struct JobLetterView: View {
                 TopHeaderView(headerTitle)
                     .padding(.top, -10)
                 TabView() {
-                        QuestionView(headerTitle: questionList[0].title, questions: questionList[0])
+                        QuestionView( questions: questionList[0])
                 }
             }//Vstack
             .background(Color("MainColor"))

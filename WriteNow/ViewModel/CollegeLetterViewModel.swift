@@ -30,13 +30,16 @@ class CollegeLetterViewModel : ObservableObject {
     @Published var textCount = "0"
     @Published var noSpaceTextCount = "0"
     
+    @Published var bindText : [String]
+    
     init(questionSet : QuestionSet){
         self.questionSet = questionSet
         questionCount = questionSet.texts.count
+        bindText = []
+        for _ in 0..<questionCount {
+            bindText.append("")
+        }
     }
-    
-    
-    
     
     func makePrompt(keywords : [String]){
         prompt = "자기소개서의 topic은 \"\(self.questionSet.title)\"이고 키워드 들은"

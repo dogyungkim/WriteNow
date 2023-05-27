@@ -14,10 +14,7 @@ struct ResultView: View {
     
     @State private var viewProgress : Bool = true
     
-    let shared = APICaller.shared
-    
-    //For textCount
-    @ObservedObject var textCountMgr = TextCountMgr()
+    @ObservedObject var viewModel : 
     
     //For Picker
     var editKeywords = ["강조","삭제","자세히"]
@@ -33,9 +30,6 @@ struct ResultView: View {
         if viewProgress {
             VStack{
                 progressState(progress: self.$progress)
-            }
-            .task {
-                await askGPT()
             }
         } else {
             VStack{
@@ -76,9 +70,6 @@ struct ResultView: View {
                 //For editButton
                 Button {
                     viewProgress = true
-                    Task{
-                        await editGPT()
-                    }
                 } label: {
                     Text("자소서 수정")
                         .frame(width: 300,height: 40)
@@ -91,18 +82,6 @@ struct ResultView: View {
             .padding()
         }//If
     }//Body
-
-    func askGPT() async {
-        try? textCountMgr.text = await shared.generateNormal(str: editText)
-        self.viewProgress.toggle()
-    }
-    
-    func editGPT() async {
-        try? await self.shared.editResponse(str: editText + "부분을" + pickerSelection + "해줘")
-        textCountMgr.text = shared.answer
-
-    }
-    
     
     struct progressState: View {
         @Binding var progress : Double
