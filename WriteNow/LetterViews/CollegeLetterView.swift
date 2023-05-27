@@ -24,8 +24,6 @@ struct CollegeLetterView: View {
         texts: [TextSet("지원 학과","컴퓨터 공학과"),
                 TextSet("진로와 관련된 학습 경험 혹은 교내 활동", "IT 창업 동아리 운영진"),
                 TextSet("배운 점","협동심, 왜 의미 있다고 생각하는지" )])]
-
-    let headerTitle = "진학 자소서"
     
     @State var index = 0 // For top tabber
     
@@ -36,7 +34,7 @@ struct CollegeLetterView: View {
                     .padding(10)
                 TabView(selection: $index) {
                     ForEach(0..<3){ pageId in
-                        QuestionView(headerTitle: questionList[pageId].title, questions: questionList[pageId])
+                        QuestionView(questions: questionList[pageId])
                     }
                 }
             }//Vstack

@@ -21,7 +21,7 @@ struct CollegeLetterResultView: View {
     
     //For edit Letter
     @State private var askText : String = ""
-
+    
     //For picker
     @State var selectedKeyword = "keyword"
     var selectkeywords = ["강조", "삭제"]
@@ -44,13 +44,7 @@ struct CollegeLetterResultView: View {
         VStack{
             ZStack{
                 if viewState {
-                    VStack{
-                        ProgressView(value: progress)
-                            .progressViewStyle(CircularProgressViewStyle(tint: Color("MainColor")))
-                        Text("자소서 생성 중")
-                            .padding(.top , 10)
-                            .font(.title3)
-                    }
+                   Progressing(progress: progress)
                 } else {
                     VStack{
                         TextEditor(text:$textCountMgr.text)
@@ -102,7 +96,7 @@ struct CollegeLetterResultView: View {
                                 .font(.title2)
                                 .cornerRadius(30)
                         }
-
+                        
                     }
                 }
             }
@@ -129,7 +123,19 @@ struct CollegeLetterResultView: View {
         textCountMgr.text = shared.answer
         self.text = shared.answer
     }
-    
+    struct Progressing : View {
+        var progress : Double
+        var body : some View{
+            VStack{
+                ProgressView(value: progress)
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color("MainColor")))
+                Text("자소서 생성 중")
+                    .padding(.top , 10)
+                    .font(.title3)
+            }
+            
+        }
+    }
 
 }
 

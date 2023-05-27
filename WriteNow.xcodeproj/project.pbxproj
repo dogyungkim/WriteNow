@@ -10,6 +10,8 @@
 		933A5ECF2A1D086B00E3C8EE /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ECE2A1D086B00E3C8EE /* ResultView.swift */; };
 		933A5ED12A1D089B00E3C8EE /* TextCountMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED02A1D089B00E3C8EE /* TextCountMgr.swift */; };
 		933A5ED32A1D0ED800E3C8EE /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED22A1D0ED800E3C8EE /* MyButton.swift */; };
+		933A5ED52A2103D700E3C8EE /* CollegeLetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */; };
+		933A5ED82A2106F200E3C8EE /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED72A2106F200E3C8EE /* APIKey.swift */; };
 		93419B012A15C24F0011A08B /* JobLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B002A15C24F0011A08B /* JobLetterView.swift */; };
 		93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B022A15C8890011A08B /* DynamicQuestionView.swift */; };
 		9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F8462A07E46800E6F326 /* CollegeLetterView.swift */; };
@@ -33,6 +35,8 @@
 		933A5ECE2A1D086B00E3C8EE /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		933A5ED02A1D089B00E3C8EE /* TextCountMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCountMgr.swift; sourceTree = "<group>"; };
 		933A5ED22A1D0ED800E3C8EE /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
+		933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterViewModel.swift; sourceTree = "<group>"; };
+		933A5ED72A2106F200E3C8EE /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		93419B002A15C24F0011A08B /* JobLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLetterView.swift; sourceTree = "<group>"; };
 		93419B022A15C8890011A08B /* DynamicQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicQuestionView.swift; sourceTree = "<group>"; };
 		9388F8462A07E46800E6F326 /* CollegeLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterView.swift; sourceTree = "<group>"; };
@@ -64,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		933A5ED62A2103DB00E3C8EE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		93419AFF2A15C1F10011A08B /* JobLetterView */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +106,7 @@
 				93B5CE832A014FD4001CEBCA /* WriteNowApp.swift */,
 				9388F84F2A0D397D00E6F326 /* HomeView.swift */,
 				93B5CE852A014FD4001CEBCA /* ContentView.swift */,
+				933A5ED62A2103DB00E3C8EE /* ViewModel */,
 				93419AFF2A15C1F10011A08B /* JobLetterView */,
 				93F462972A0E0DF80084B8DF /* Model */,
 				93F462912A0E05390084B8DF /* LetterViews */,
@@ -142,6 +155,7 @@
 			children = (
 				93F462952A0E0CB20084B8DF /* QuestionSet.swift */,
 				933A5ED02A1D089B00E3C8EE /* TextCountMgr.swift */,
+				933A5ED72A2106F200E3C8EE /* APIKey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,7 +237,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				93F462962A0E0CB20084B8DF /* QuestionSet.swift in Sources */,
+				933A5ED82A2106F200E3C8EE /* APIKey.swift in Sources */,
 				93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */,
+				933A5ED52A2103D700E3C8EE /* CollegeLetterViewModel.swift in Sources */,
 				9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */,
 				9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */,
 				933A5ECF2A1D086B00E3C8EE /* ResultView.swift in Sources */,
