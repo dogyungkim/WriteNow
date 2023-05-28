@@ -55,12 +55,12 @@ struct HomeView: View {
                 Image(systemName: "doc.plaintext")
                 Text("취업 자소서")
             }).tag(1)
+             */
            CollegeLetterView()
                 .tabItem({
                     Image(systemName: "square.and.pencil")
                     Text("진학 자소서")
                 }).tag(2)
-             */
             
         }//TabView
         .accentColor(Color("MainColor"))

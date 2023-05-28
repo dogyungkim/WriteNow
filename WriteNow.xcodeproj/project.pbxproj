@@ -12,7 +12,7 @@
 		933A5ED32A1D0ED800E3C8EE /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED22A1D0ED800E3C8EE /* MyButton.swift */; };
 		933A5ED52A2103D700E3C8EE /* CollegeLetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */; };
 		933A5ED82A2106F200E3C8EE /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED72A2106F200E3C8EE /* APIKey.swift */; };
-		93419B012A15C24F0011A08B /* JobLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B002A15C24F0011A08B /* JobLetterView.swift */; };
+		933A5EDA2A22723200E3C8EE /* DynamicLetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED92A22723200E3C8EE /* DynamicLetterViewModel.swift */; };
 		93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B022A15C8890011A08B /* DynamicQuestionView.swift */; };
 		9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F8462A07E46800E6F326 /* CollegeLetterView.swift */; };
 		9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84B2A09379700E6F326 /* TopHeaderView.swift */; };
@@ -37,7 +37,7 @@
 		933A5ED22A1D0ED800E3C8EE /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterViewModel.swift; sourceTree = "<group>"; };
 		933A5ED72A2106F200E3C8EE /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		93419B002A15C24F0011A08B /* JobLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLetterView.swift; sourceTree = "<group>"; };
+		933A5ED92A22723200E3C8EE /* DynamicLetterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLetterViewModel.swift; sourceTree = "<group>"; };
 		93419B022A15C8890011A08B /* DynamicQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicQuestionView.swift; sourceTree = "<group>"; };
 		9388F8462A07E46800E6F326 /* CollegeLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterView.swift; sourceTree = "<group>"; };
 		9388F84B2A09379700E6F326 /* TopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderView.swift; sourceTree = "<group>"; };
@@ -72,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */,
+				933A5ED92A22723200E3C8EE /* DynamicLetterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -79,7 +80,8 @@
 		93419AFF2A15C1F10011A08B /* JobLetterView */ = {
 			isa = PBXGroup;
 			children = (
-				93419B002A15C24F0011A08B /* JobLetterView.swift */,
+				93419B022A15C8890011A08B /* DynamicQuestionView.swift */,
+				933A5ECE2A1D086B00E3C8EE /* ResultView.swift */,
 			);
 			path = JobLetterView;
 			sourceTree = "<group>";
@@ -129,8 +131,6 @@
 		93F462912A0E05390084B8DF /* LetterViews */ = {
 			isa = PBXGroup;
 			children = (
-				93419B022A15C8890011A08B /* DynamicQuestionView.swift */,
-				933A5ECE2A1D086B00E3C8EE /* ResultView.swift */,
 				9388F84D2A0BE5FE00E6F326 /* QuestionView.swift */,
 				939E70AE2A09DA3400CAA503 /* CollegeLetterResultView.swift */,
 				9388F8462A07E46800E6F326 /* CollegeLetterView.swift */,
@@ -237,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93F462962A0E0CB20084B8DF /* QuestionSet.swift in Sources */,
+				933A5EDA2A22723200E3C8EE /* DynamicLetterViewModel.swift in Sources */,
 				933A5ED82A2106F200E3C8EE /* APIKey.swift in Sources */,
 				93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */,
 				933A5ED52A2103D700E3C8EE /* CollegeLetterViewModel.swift in Sources */,
@@ -248,7 +249,6 @@
 				93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */,
 				9388F84E2A0BE5FE00E6F326 /* QuestionView.swift in Sources */,
 				93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */,
-				93419B012A15C24F0011A08B /* JobLetterView.swift in Sources */,
 				939E70AF2A09DA3400CAA503 /* CollegeLetterResultView.swift in Sources */,
 				9388F8502A0D397D00E6F326 /* HomeView.swift in Sources */,
 				93BFB8B72A127B9C0088F220 /* QuestionTextView.swift in Sources */,

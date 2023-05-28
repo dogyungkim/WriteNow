@@ -1,4 +1,12 @@
 //
+//  DynamicLetterViewModel.swift
+//  WriteNow
+//
+//  Created by 김도경 on 2023/05/28.
+//
+
+import Foundation
+//
 //  CollegeLetterViewModel.swift
 //  WriteNow
 //
@@ -8,11 +16,11 @@
 import Foundation
 import OpenAISwift
 
-class CollegeLetterViewModel : ObservableObject {
+class DynamicLetterViewModel : ObservableObject {
     
-    let headerTitle = "진학 자소서"
+    let headerTitle : String
     var questionSet : QuestionSet
-    let questionCount : Int
+    var questionCount : Int
     
     //For API
     private var openAI : OpenAISwift = OpenAISwift(authToken: APIKey.key)
@@ -30,15 +38,43 @@ class CollegeLetterViewModel : ObservableObject {
     @Published var textCount = "0"
     @Published var noSpaceTextCount = "0"
     
-    @Published var bindText : [String]
+    @Published var bindText : [String] = [] {
+        didSet{
+            questionCount = bindText.count
+        }
+    }
     
-    init(questionSet : QuestionSet){
+    //For Dynamic Keywords
+    @Published var keywords : [String] = []
+    
+    init(headerTitle : String , questionSet : QuestionSet){
+        self.headerTitle = headerTitle
         self.questionSet = questionSet
         questionCount = questionSet.texts.count
-        bindText = []
         for _ in 0..<questionCount {
             bindText.append("")
         }
+    }
+    
+    func generateKeywords(str : String) async throws -> Bool {
+        var success : Bool
+        let realCharacterSet: Set<Character> = Set(#"["]'"#)
+        let chat: [ChatMessage] = [
+            ChatMessage(role: .system, content: "너는 좋은 assistant야"),
+            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. At least 4 keywords is needed. no other explanation except the code. ")]
+        
+        do{
+            let result = try await openAI.sendChat(with: chat,maxTokens: 1000)
+            var st = result.choices?.first?.message.content ?? "Error입니다."
+            //가져온 키워드 수정
+            st.removeAll(where: realCharacterSet.contains)
+            keywords = st.components(separatedBy: ",")
+            success = true
+        } catch {
+            print("실패 ㅠㅠ")
+            success = false
+        }
+        return success
     }
     
     func makePrompt(){

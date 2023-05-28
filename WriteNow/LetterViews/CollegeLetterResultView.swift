@@ -16,28 +16,25 @@ struct CollegeLetterResultView: View {
             viewState = false
         }
     }
-    @State private var viewState : Bool = true
+    @State private var viewState : Bool = false
     @State private var progress : Double = 1
     
     //For edit Letter
     @State private var askText : String = ""
     
     //For picker
-    @State var selectedKeyword = "keyword"
-
-    let keywords : [String]
+    @State var selectedKeyword = "강조"
     
     @ObservedObject var viewModel : CollegeLetterViewModel
     
-    init(keywords : [String], viewModel : CollegeLetterViewModel){
-        self.keywords = keywords
+    init(viewModel : CollegeLetterViewModel){
         self.viewModel  = viewModel
     }
     
     var body: some View {
         VStack{
             ZStack{
-                if viewState {
+                if !viewState {
                    Progressing(progress: progress)
                 } else {
                     VStack{
@@ -48,12 +45,23 @@ struct CollegeLetterResultView: View {
                         //To edit created Letter
                         KeywordView(selectedKeyword: $selectedKeyword,askText: $askText)
                         MyButton("자소서 수정")
+                            .onTapGesture {
+                                viewState = false
+                                Task{
+                                    viewState = try await viewModel.editGPT(editText: "\"" + askText + "\"를 " + selectedKeyword + "해줘!")
+                                }
+                            }
                     }
                 }
             }
         }
         .navigationTitle("Write Now")
         .toolbar(.hidden, for: .tabBar)
+        .onAppear{
+            Task{
+                viewState = try await viewModel.askGPT()
+            }
+        }
     }
     
     
@@ -114,8 +122,15 @@ struct CollegeLetterResultView: View {
                 TextField("수정 하고 싶은 부분", text: $askText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
+            .padding(.horizontal, 10)
             .padding(.bottom, 5)
+            
         }
     }
+}
 
+struct MyPreviewProvider_Previews: PreviewProvider {
+    static var previews: some View {
+        CollegeLetterResultView(viewModel: CollegeLetterViewModel(questionSet: QuestionSet(title: "", texts: [TextSet("","")])) )
+    }
 }

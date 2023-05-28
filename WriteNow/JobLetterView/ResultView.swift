@@ -12,41 +12,42 @@ import SwiftUI
 struct ResultView: View {
     @State private var progress : Double = 1
     
-    @State private var viewProgress : Bool = true
+    @State private var viewProgress : Bool = false
     
-    @ObservedObject var viewModel : 
+    @ObservedObject var viewModel : CollegeLetterViewModel
     
     //For Picker
     var editKeywords = ["강조","삭제","자세히"]
     @State var pickerSelection = "keyword"
     @State var editText : String = ""
     
-    init(text : String) {
+    init(text : String, viewModel : CollegeLetterViewModel) {
         editText = text
+        self.viewModel = viewModel
     }
     
     var body: some View{
         // If letter is on recieving data
-        if viewProgress {
+        if !viewProgress {
             VStack{
                 progressState(progress: self.$progress)
             }
         } else {
             VStack{
                 //TextEditor
-                TextEditor(text:$textCountMgr.text)
+                TextEditor(text:$viewModel.resultText)
                     .frame(maxWidth: 380, maxHeight: .greatestFiniteMagnitude)
                     .padding()
                     .border(.black,width: 2)
                 Spacer()
                 //Counter
                 HStack(){
-                    Text("공백 포함 = " + textCountMgr.counted)
+                    Text("공백 포함 = " + viewModel.textCount)
                         .font(.title3)
                         .foregroundColor(.black)
                     Divider()
                         .frame(height: 20)
-                    Text("공백 미포함 = " + textCountMgr.noSpaceCount)
+                    Text("공백 미포함 = " + viewModel.noSpaceTextCount)
                         .font(.title3)
                         .foregroundColor(.black)
                 }
@@ -80,7 +81,13 @@ struct ResultView: View {
                 }
             }//Vstack
             .padding()
+            .onAppear{
+                Task{
+                  viewProgress = try await viewModel.askGPT()
+                }
+            }
         }//If
+    
     }//Body
     
     struct progressState: View {
@@ -94,9 +101,4 @@ struct ResultView: View {
         }
     }
 }
-
-struct ResultView_Preview: PreviewProvider {
-    static var previews: some View {
-        ResultView(text: "테스트 결과! 짜잔")
-    }
-}
+ 

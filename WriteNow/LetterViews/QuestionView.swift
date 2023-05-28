@@ -26,14 +26,7 @@ struct QuestionView: View {
                     MyText(title: viewModel.questionSet.title)
                     VStack(alignment: .leading){
                         ForEach(Array(zip(viewModel.questionSet.texts.indices, viewModel.questionSet.texts)), id: \.0){ index, text in
-                            VStack{
-                                Text(text.keywords)
-                                    .font(.title3)
-                                    .padding(.bottom, 1)
-                                TextField("ex)" + text.examples, text: $viewModel.bindText[index])
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .padding(.bottom, 10)
-                            }
+                            QuestionTextView(text: $viewModel.bindText[index], title: text.keywords, fieldText: text.examples)
                         }
                     }
                     .padding(20)
@@ -43,12 +36,9 @@ struct QuestionView: View {
                     Spacer()
                     
                     //Create Button with Navigattion
-                    /*
-                    NavigationLink(destination: CollegeLetterResultView(keywords: bindText,viewModel: self.viewModel)){
+                    NavigationLink(destination: CollegeLetterResultView(viewModel: self.viewModel)){
                        MyButton("자소서생성")
-                        
                     }
-                     */
                 }//Body Vstack
                 .padding(10)
                 .padding(.top, 20)
