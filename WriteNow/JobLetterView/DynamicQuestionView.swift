@@ -9,11 +9,10 @@
  
 struct DynamicQuestionView: View {
     //For progress view
-    @State var viewState : Bool = false
+    @State var viewState : Bool = true
     @State var progress : Double = 100
-    @State var text : String = ""
-    @State var createState : Bool = true
-    @State var selection : Int? = 0
+    @State var text : String
+    @State var keywordCreated : Bool = false
     
     //For responsetext
     @State var responses : [String] = [] {
@@ -27,10 +26,10 @@ struct DynamicQuestionView: View {
     //Initializer
     init(headerTitle : String, questions : QuestionSet){
         self.viewModel = DynamicLetterViewModel(headerTitle: headerTitle, questionSet: questions)
+        self.text = questions.texts[0].examples
     }
     
     var body: some View {
-        
         NavigationStack{
             //Top header
             TopHeaderView(viewModel.headerTitle)
@@ -48,65 +47,42 @@ struct DynamicQuestionView: View {
                 Spacer()
                 
                 ZStack{
-                    if viewState {
+                    if !viewState {
                         VStack{
                             ProgressView(value: progress)
                                 .progressViewStyle(CircularProgressViewStyle(tint: Color("MainColor")))
                             Text("키워드 생성 중")
                         }
                     } else {
-                    }
-                        /*
-                        Spacer()
-                        
                         ScrollView{
-                            VStack{
-                                ForEach(Array(zip(responses.indices, responses)), id: \.0){ index, response in
-                                    QuestionTextView(text: $bindTexts[index], title: response, fieldText: "")
-                                        .frame(maxWidth: 410)
-                                    
+                            VStack {
+                                ForEach(0..<viewModel.questionCount, id: \.self){ index in
+                                    QuestionTextView(text: $viewModel.bindText[index], title: viewModel.keywords[index], fieldText: "")
                                 }
                             }
+                            .padding(20)
                             .background(Color(uiColor: .secondarySystemBackground))
                             .cornerRadius(30)
                         }
-                        
                     }
-                         */
                 }
                 Spacer()
                 
                 //자소서 생성 버튼
-                if createState{
+                if !keywordCreated {
                     Button {
                         Task {
-                            viewState = true
-                            print("Button Clicked")
-                            //responses = changeResponse()
-                            createState = false
+                            viewState = false
+                            viewState = try await viewModel.generateKeywords(str:text)
+                            keywordCreated = true
                         }
                     } label: {
                         MyButton("키워드 생성")
                     }
                 } else {
-                    /*
-                    //NavigationLink (destination: ResultView(text: sendText), tag:1, selection: $selection){
-                        Button {
-                            print("자소서 생성 버튼 clicked")
-                            for index in bindTexts.indices {
-                                sendText += responses[index] + bindTexts[index]
-                            }
-                            selection = 1
-                        } label: {
-                            Text("자소서 생성")
-                                .frame(width: 300,height: 40)
-                                .background(Color("MainColor"))
-                                .foregroundColor(.white)
-                                .font(.title2)
-                                .cornerRadius(30)
-                                .padding(.bottom, 3)
-                        }
-                     */
+                    NavigationLink (destination: ResultView(viewModel: viewModel)){
+                        MyButton("자소서 생성")
+                    }
                 }// if Button
             }
             .padding()
@@ -119,7 +95,7 @@ struct DynamicQuestionView_Previews: PreviewProvider {
         DynamicQuestionView(headerTitle: "진학 자소서",
                             questions: QuestionSet(
                                 title: "",
-                                texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다. ","본인의 성장과정을 간략히 기술하되 현재의 자신에게 가장 큰 영향을 끼친 사건, 인물 등을 포함하여 기술하시기 바랍니다")]))
+                                texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다.","삼성전자를 지원한 이유와 입사 후 회사에서 이루고 싶은 꿈을 기술하십시오")]))
     }
 }
 

@@ -20,7 +20,8 @@ class DynamicLetterViewModel : ObservableObject {
     
     let headerTitle : String
     var questionSet : QuestionSet
-    var questionCount : Int
+    var mainQuestion : String = ""
+    var questionCount : Int = 0
     
     //For API
     private var openAI : OpenAISwift = OpenAISwift(authToken: APIKey.key)
@@ -38,33 +39,35 @@ class DynamicLetterViewModel : ObservableObject {
     @Published var textCount = "0"
     @Published var noSpaceTextCount = "0"
     
-    @Published var bindText : [String] = [] {
-        didSet{
-            questionCount = bindText.count
-        }
-    }
+  
     
     //For Dynamic Keywords
-    @Published var keywords : [String] = []
+    @Published var keywords : [String] = [] {
+        didSet{
+            for _ in keywords.indices {
+                bindText.append("")
+            }
+            questionCount = keywords.count
+        }
+    }
+    @Published var bindText : [String] = []
     
     init(headerTitle : String , questionSet : QuestionSet){
         self.headerTitle = headerTitle
         self.questionSet = questionSet
-        questionCount = questionSet.texts.count
-        for _ in 0..<questionCount {
-            bindText.append("")
-        }
     }
     
     func generateKeywords(str : String) async throws -> Bool {
+        print("DVM: KeywordGen ")
+        mainQuestion = str
         var success : Bool
-        let realCharacterSet: Set<Character> = Set(#"["]'"#)
+        let realCharacterSet: Set<Character> = Set(#"["].'"#)
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
-            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드를 알려줘. 배열로 알려줘. 배열 이름은 필요 없어. At least 4 keywords is needed. no other explanation except the code. ")]
+            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드는 뭘까. 배열로 알려줘. 배열 이름은 필요 없어.")]
         
         do{
-            let result = try await openAI.sendChat(with: chat,maxTokens: 1000)
+            let result = try await openAI.sendChat(with: chat,temperature: 0.8, maxTokens: 1000)
             var st = result.choices?.first?.message.content ?? "Error입니다."
             //가져온 키워드 수정
             st.removeAll(where: realCharacterSet.contains)
@@ -78,10 +81,10 @@ class DynamicLetterViewModel : ObservableObject {
     }
     
     func makePrompt(){
-        print("VM: makingPrompt")
-        prompt = "자기소개서의 topic은 \"\(self.questionSet.title)\"이고 키워드 들은 "
+        print("DVM: makingPrompt")
+        prompt = "자기소개서의 topic은 \"\(self.mainQuestion)\"이고 키워드 들은 "
         for i in 0..<questionCount {
-            prompt.append(questionSet.texts[i].keywords + ":" + bindText[i] + ", ")
+            prompt.append(keywords[i] + ":" + bindText[i] + ", ")
         }
         prompt.append("이것들로 자기소개서를 작성해줘!")
         print(prompt)
@@ -90,7 +93,7 @@ class DynamicLetterViewModel : ObservableObject {
     func askGPT() async throws -> Bool {
         var success : Bool
         makePrompt()
-        print("VM: AskGPT")
+        print("DVM: AskGPT")
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
             ChatMessage(role: .user, content: #"대학입시를 위한 자기소개서를 쓰려고 해. 내가 "" 사이에 문항을 입력할께. 그리고 자소서에 참고할 키워드들을 입력할께."#),
@@ -103,7 +106,7 @@ class DynamicLetterViewModel : ObservableObject {
             success = true
         } catch{
             resultText = "다시 시도해 주세요"
-            success = false
+            success = true
         }
         return success
     }
@@ -123,7 +126,7 @@ class DynamicLetterViewModel : ObservableObject {
             success = true
         } catch{
             resultText = "다시 시도해 주세요"
-            success = false
+            success = true
         }
         return success
     }

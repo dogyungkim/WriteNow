@@ -13,6 +13,9 @@
 		933A5ED52A2103D700E3C8EE /* CollegeLetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */; };
 		933A5ED82A2106F200E3C8EE /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED72A2106F200E3C8EE /* APIKey.swift */; };
 		933A5EDA2A22723200E3C8EE /* DynamicLetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5ED92A22723200E3C8EE /* DynamicLetterViewModel.swift */; };
+		933A5EDC2A23AE6D00E3C8EE /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5EDB2A23AE6D00E3C8EE /* TextEditorView.swift */; };
+		933A5EDE2A23AF2300E3C8EE /* KeywordSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5EDD2A23AF2300E3C8EE /* KeywordSelectView.swift */; };
+		933A5EE02A23AF7600E3C8EE /* ProgressingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5EDF2A23AF7600E3C8EE /* ProgressingView.swift */; };
 		93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B022A15C8890011A08B /* DynamicQuestionView.swift */; };
 		9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F8462A07E46800E6F326 /* CollegeLetterView.swift */; };
 		9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84B2A09379700E6F326 /* TopHeaderView.swift */; };
@@ -38,6 +41,9 @@
 		933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterViewModel.swift; sourceTree = "<group>"; };
 		933A5ED72A2106F200E3C8EE /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		933A5ED92A22723200E3C8EE /* DynamicLetterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLetterViewModel.swift; sourceTree = "<group>"; };
+		933A5EDB2A23AE6D00E3C8EE /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
+		933A5EDD2A23AF2300E3C8EE /* KeywordSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSelectView.swift; sourceTree = "<group>"; };
+		933A5EDF2A23AF7600E3C8EE /* ProgressingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressingView.swift; sourceTree = "<group>"; };
 		93419B022A15C8890011A08B /* DynamicQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicQuestionView.swift; sourceTree = "<group>"; };
 		9388F8462A07E46800E6F326 /* CollegeLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterView.swift; sourceTree = "<group>"; };
 		9388F84B2A09379700E6F326 /* TopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderView.swift; sourceTree = "<group>"; };
@@ -146,6 +152,9 @@
 				9388F84B2A09379700E6F326 /* TopHeaderView.swift */,
 				93BFB8B22A0E87300088F220 /* MainBoxView.swift */,
 				93BFB8B82A1285A50088F220 /* TabBarView.swift */,
+				933A5EDB2A23AE6D00E3C8EE /* TextEditorView.swift */,
+				933A5EDD2A23AF2300E3C8EE /* KeywordSelectView.swift */,
+				933A5EDF2A23AF7600E3C8EE /* ProgressingView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -241,6 +250,8 @@
 				933A5ED82A2106F200E3C8EE /* APIKey.swift in Sources */,
 				93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */,
 				933A5ED52A2103D700E3C8EE /* CollegeLetterViewModel.swift in Sources */,
+				933A5EDE2A23AF2300E3C8EE /* KeywordSelectView.swift in Sources */,
+				933A5EE02A23AF7600E3C8EE /* ProgressingView.swift in Sources */,
 				9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */,
 				9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */,
 				933A5ECF2A1D086B00E3C8EE /* ResultView.swift in Sources */,
@@ -254,6 +265,7 @@
 				93BFB8B72A127B9C0088F220 /* QuestionTextView.swift in Sources */,
 				93B5CE952A02B313001CEBCA /* APICaller.swift in Sources */,
 				93BFB8B92A1285A50088F220 /* TabBarView.swift in Sources */,
+				933A5EDC2A23AE6D00E3C8EE /* TextEditorView.swift in Sources */,
 				93B5CE842A014FD4001CEBCA /* WriteNowApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
