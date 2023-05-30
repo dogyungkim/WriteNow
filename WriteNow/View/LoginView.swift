@@ -27,7 +27,13 @@ struct LoginView: View {
             .ignoresSafeArea()
             .padding(.bottom, -70)
             
+            
+            
             Form{
+                if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
+                        .foregroundColor(.red)
+                }
                 TextField("이메일", text: $viewModel.email)
                     .textFieldStyle(DefaultTextFieldStyle())
                     .autocorrectionDisabled()
@@ -36,10 +42,12 @@ struct LoginView: View {
                 SecureField("비밀번호", text: $viewModel.password)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
+                
                 MyButton("Log In",width: CGFloat(350))
                     .onTapGesture {
                         viewModel.login()
                     }
+                
             }
             
             VStack{

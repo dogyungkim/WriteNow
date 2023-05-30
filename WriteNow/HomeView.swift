@@ -47,6 +47,7 @@ struct HomeView: View {
                     Image(systemName: "house.fill")
                     Text("HomeView")
                 }).tag(0)
+                
                 DynamicQuestionView(headerTitle: "취업 자소서",
                                     questions: QuestionSet(
                                         title: "",
@@ -55,6 +56,7 @@ struct HomeView: View {
                     Image(systemName: "doc.plaintext")
                     Text("취업 자소서")
                 }).tag(1)
+                
                 CollegeLetterView()
                     .tabItem({
                         Image(systemName: "square.and.pencil")

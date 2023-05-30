@@ -59,15 +59,20 @@ struct DynamicQuestionView: View {
                             Text("키워드 생성 중")
                         }
                     } else {
-                        ScrollView{
-                            VStack {
-                                ForEach(0..<viewModel.questionCount, id: \.self){ index in
-                                    QuestionTextView(text: $viewModel.bindText[index], title: viewModel.keywords[index], fieldText: "")
-                                }
+                        VStack{
+                            if keywordCreated{
+                                Text("필요없는 키워드는 빈칸으로 두세요")
                             }
-                            .padding(20)
-                            .background(Color(uiColor: .secondarySystemBackground))
-                            .cornerRadius(30)
+                            ScrollView{
+                                VStack {
+                                    ForEach(0..<viewModel.questionCount, id: \.self){ index in
+                                        QuestionTextView(text: $viewModel.bindText[index], title: viewModel.keywords[index], fieldText: "")
+                                    }
+                                }
+                                .padding(20)
+                                .background(Color(uiColor: .secondarySystemBackground))
+                                .cornerRadius(30)
+                            }
                         }
                     }
                 }
