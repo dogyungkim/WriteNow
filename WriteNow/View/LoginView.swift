@@ -8,26 +8,43 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email : String = ""
+    @ObservedObject var viewModel = LoginViewModel()
     var body: some View {
-        VStack{
-            TopHeaderView("Write Now")
-        
-            
-            
-            Form{
+        NavigationStack{
+            ZStack{
+                Color("MainColor")
                 VStack{
-                    TextField("이메일", text: $email)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("이메일", text: $email)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    MyButton("Log In")
+                    Text("Write Now")
+                        .foregroundColor(.white)
+                        .font(.system(size:50))
+                        .bold()
+                    Text("자소서 작성의 첫 걸음")
+                        .foregroundColor(.white)
+                        .font(.title3)
                 }
             }
-            .padding(.top,200)
+            .frame(height: 300)
+            .ignoresSafeArea()
+            .padding(.bottom, -70)
+            
+            Form{
+                TextField("이메일", text: $viewModel.email)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.words)
+                
+                SecureField("비밀번호", text: $viewModel.password)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                
+                MyButton("Log In",width: CGFloat(350))
+                    .onTapGesture {
+                        viewModel.login()
+                    }
+            }
             
             VStack{
                 Text("처음 사용하시나요?")
+                NavigationLink("Create An Account", destination: Text(""))
                 
             }
             Spacer()

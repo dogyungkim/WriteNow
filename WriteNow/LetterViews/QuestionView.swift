@@ -41,7 +41,7 @@ struct QuestionView: View {
                     }
                 }//Body Vstack
                 .padding(10)
-                .padding(.top, 20)
+                
             } // Vstack
         }// Navigation View
     }

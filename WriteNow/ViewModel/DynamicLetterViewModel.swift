@@ -63,7 +63,14 @@ class DynamicLetterViewModel : ObservableObject {
         let realCharacterSet: Set<Character> = Set(#"["].'"#)
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
-            ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드는 뭘까. 배열로 알려줘. 배열 이름은 필요 없어.")]
+            ChatMessage(role: .user, content: "안녕. 자소서를 작성하려고 하는데 어떻게 작성해야할지 모르겠어. 너가 도움을 줬으면 좋겠어. 내가 문항을 입력하면, 자기소개서 작성에 필요한 핵심 키워드들을 알려줄 수 있을까? "),
+            ChatMessage(role: .assistant, content: "안녕하세요! 자기소개서 작성에 관심이 있으시다니 멋지네요. 저는 키워드 추천과 관련해서 도움을 드릴 수 있어요. 문항을 입력해주시면 해당 문항에 적합한 자소서 작성에 필요한 핵심 키워드들을 알려드릴게요. 어떤 문항이든 상관없으니 원하는 문항을 입력해주세요! "),
+            ChatMessage(role: .user, content: "팀을 이뤄 협업하면서 얻었던 성과 겸험/ 자신이 어떤 역할로 팀에 기여했고, 어떤 교훈을 얻었는지 포함"),
+            ChatMessage(role: .assistant, content: "팀워크, 협업, 역할, 성과, 얻은 교훈, 리더십, 문제해결 과정"),
+            ChatMessage(role: .user, content: "다음 문항도 알려줘"),
+            ChatMessage(role: .assistant, content: "다음 문항을 입력해주세요."),
+            ChatMessage(role: .user, content: str)
+        ]
         
         do{
             let result = try await openAI.sendChat(with: chat,temperature: 0.8)
@@ -83,9 +90,12 @@ class DynamicLetterViewModel : ObservableObject {
         print("DVM: makingPrompt")
         prompt = "자기소개서의 topic은 \"\(self.mainQuestion)\"이고 키워드 들은 "
         for i in 0..<questionCount {
-            prompt.append(keywords[i] + ":" + bindText[i] + ", ")
+            if bindText[i].isEmpty {
+            } else {
+                prompt.append(keywords[i] + ":" + bindText[i] + ", ")
+            }
         }
-        prompt.append("이것들로 자기소개서를 작성해줘!")
+        prompt.popLast()
         print(prompt)
     }
     

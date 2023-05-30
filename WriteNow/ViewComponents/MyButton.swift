@@ -9,18 +9,22 @@ import SwiftUI
 
 struct MyButton: View {
     let title : String
+    var width : CGFloat
+    var height : CGFloat
     
-    init(_ title : String) {
+    init(_ title : String, width : CGFloat = CGFloat(300), height : CGFloat = CGFloat(40)){
         self.title = title
+        self.width = width
+        self.height = height
     }
+    
     var body: some View {
         Text(title)
-            .frame(width: 300,height: 40)
+            .frame(width: width, height: height)
             .background(Color("MainColor"))
             .foregroundColor(.white)
             .font(.title2)
             .cornerRadius(30)
-            .padding(.bottom, 30)
     }
 }
 

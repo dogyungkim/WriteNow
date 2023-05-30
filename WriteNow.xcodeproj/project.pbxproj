@@ -32,6 +32,8 @@
 		93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFB8B22A0E87300088F220 /* MainBoxView.swift */; };
 		93BFB8B72A127B9C0088F220 /* QuestionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFB8B62A127B9C0088F220 /* QuestionTextView.swift */; };
 		93BFB8B92A1285A50088F220 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFB8B82A1285A50088F220 /* TabBarView.swift */; };
+		93D6FBA22A258A2E0076E217 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6FBA12A258A2E0076E217 /* RegisterView.swift */; };
+		93D6FBA42A2591410076E217 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6FBA32A2591410076E217 /* LoginViewModel.swift */; };
 		93F462962A0E0CB20084B8DF /* QuestionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F462952A0E0CB20084B8DF /* QuestionSet.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		93BFB8B22A0E87300088F220 /* MainBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoxView.swift; sourceTree = "<group>"; };
 		93BFB8B62A127B9C0088F220 /* QuestionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTextView.swift; sourceTree = "<group>"; };
 		93BFB8B82A1285A50088F220 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		93D6FBA12A258A2E0076E217 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		93D6FBA32A2591410076E217 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		93F462952A0E0CB20084B8DF /* QuestionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +85,7 @@
 			children = (
 				933A5ED42A2103D700E3C8EE /* CollegeLetterViewModel.swift */,
 				933A5ED92A22723200E3C8EE /* DynamicLetterViewModel.swift */,
+				93D6FBA32A2591410076E217 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				933A5EE52A24743A00E3C8EE /* LoginView.swift */,
+				93D6FBA12A258A2E0076E217 /* RegisterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,6 +275,7 @@
 				933A5ECF2A1D086B00E3C8EE /* ResultView.swift in Sources */,
 				933A5ED12A1D089B00E3C8EE /* TextCountMgr.swift in Sources */,
 				933A5ED32A1D0ED800E3C8EE /* MyButton.swift in Sources */,
+				93D6FBA42A2591410076E217 /* LoginViewModel.swift in Sources */,
 				93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */,
 				9388F84E2A0BE5FE00E6F326 /* QuestionView.swift in Sources */,
 				93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */,
@@ -277,6 +284,7 @@
 				93BFB8B72A127B9C0088F220 /* QuestionTextView.swift in Sources */,
 				93B5CE952A02B313001CEBCA /* APICaller.swift in Sources */,
 				93BFB8B92A1285A50088F220 /* TabBarView.swift in Sources */,
+				93D6FBA22A258A2E0076E217 /* RegisterView.swift in Sources */,
 				933A5EDC2A23AE6D00E3C8EE /* TextEditorView.swift in Sources */,
 				93B5CE842A014FD4001CEBCA /* WriteNowApp.swift in Sources */,
 			);

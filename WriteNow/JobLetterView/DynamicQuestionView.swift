@@ -91,7 +91,7 @@ struct DynamicQuestionView: View {
                    
                 }// if Button
             }
-            .padding()
+            .padding(10)
         }
     }//body
 }
