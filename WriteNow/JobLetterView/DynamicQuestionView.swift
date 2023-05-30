@@ -32,12 +32,17 @@ struct DynamicQuestionView: View {
     var body: some View {
         NavigationStack{
             //Top header
-            TopHeaderView(viewModel.headerTitle)
+            if viewModel.headerTitle == "" {
+                
+            } else {
+                TopHeaderView(viewModel.headerTitle)
+            }
             VStack{
                 VStack{
                     Text(viewModel.questionSet.texts[0].keywords)
                     TextField(viewModel.questionSet.texts[0].examples, text: $text)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .font(.body)
                 }
                 .padding()
                 .font(.title2)
@@ -83,6 +88,7 @@ struct DynamicQuestionView: View {
                     NavigationLink (destination: ResultView(viewModel: viewModel)){
                         MyButton("자소서 생성")
                     }
+                   
                 }// if Button
             }
             .padding()
@@ -95,7 +101,7 @@ struct DynamicQuestionView_Previews: PreviewProvider {
         DynamicQuestionView(headerTitle: "진학 자소서",
                             questions: QuestionSet(
                                 title: "",
-                                texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다.","삼성전자를 지원한 이유와 입사 후 회사에서 이루고 싶은 꿈을 기술하십시오")]))
+                                texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다.","지원 직무 관련 프로젝트/과제 중 기술적으로 가장 어려웠던 과제와 해결방안에 대해 구체적으로 서술하여 주시기 바랍니다")]))
     }
 }
 

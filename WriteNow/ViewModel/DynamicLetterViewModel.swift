@@ -22,7 +22,6 @@ class DynamicLetterViewModel : ObservableObject {
     var questionSet : QuestionSet
     var mainQuestion : String = ""
     var questionCount : Int = 0
-    
     //For API
     private var openAI : OpenAISwift = OpenAISwift(authToken: APIKey.key)
 
@@ -67,7 +66,7 @@ class DynamicLetterViewModel : ObservableObject {
             ChatMessage(role: .user, content: "자기소개서를 작성하려고 하는데 1번 문항이 " + str + " 야. 이 문항에 필요한 중요한 키워드는 뭘까. 배열로 알려줘. 배열 이름은 필요 없어.")]
         
         do{
-            let result = try await openAI.sendChat(with: chat,temperature: 0.8, maxTokens: 1000)
+            let result = try await openAI.sendChat(with: chat,temperature: 0.8)
             var st = result.choices?.first?.message.content ?? "Error입니다."
             //가져온 키워드 수정
             st.removeAll(where: realCharacterSet.contains)
@@ -101,7 +100,7 @@ class DynamicLetterViewModel : ObservableObject {
             ChatMessage(role: .user, content: self.prompt)
         ]
         do{
-            let result = try await openAI.sendChat(with: chat)
+            let result = try await openAI.sendChat(with: chat, temperature: 0.8)
             resultText = result.choices?.first?.message.content ?? "Error입니다."
             success = true
         } catch{
@@ -113,18 +112,18 @@ class DynamicLetterViewModel : ObservableObject {
     
     func editGPT(editText : String) async throws -> Bool {
         var success : Bool
-        print("VM: EditGPT")
+        print("VM: EditGPT: " + editText)
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
             ChatMessage(role: .user, content: "작성해준 \" " + resultText + "\". 이 자소서를 수정 하고 싶어. "),
-            ChatMessage(role: .assistant, content: "수정하고 싶은 부분을 알려주세요"),
+            ChatMessage(role: .assistant, content: "수정하고 싶은 부분을 알려주시면 다시 작성하겠습니다."),
             ChatMessage(role: .user, content: editText)
         ]
         do{
             let result = try await openAI.sendChat(with: chat)
             resultText = result.choices?.first?.message.content ?? "Error입니다."
             success = true
-        } catch{
+        } catch {
             resultText = "다시 시도해 주세요"
             success = true
         }

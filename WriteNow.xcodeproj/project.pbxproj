@@ -16,6 +16,8 @@
 		933A5EDC2A23AE6D00E3C8EE /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5EDB2A23AE6D00E3C8EE /* TextEditorView.swift */; };
 		933A5EDE2A23AF2300E3C8EE /* KeywordSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5EDD2A23AF2300E3C8EE /* KeywordSelectView.swift */; };
 		933A5EE02A23AF7600E3C8EE /* ProgressingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5EDF2A23AF7600E3C8EE /* ProgressingView.swift */; };
+		933A5EE32A2457F200E3C8EE /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 933A5EE22A2457F200E3C8EE /* OpenAISwift */; };
+		933A5EE62A24743A00E3C8EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A5EE52A24743A00E3C8EE /* LoginView.swift */; };
 		93419B032A15C8890011A08B /* DynamicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93419B022A15C8890011A08B /* DynamicQuestionView.swift */; };
 		9388F8472A07E46800E6F326 /* CollegeLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F8462A07E46800E6F326 /* CollegeLetterView.swift */; };
 		9388F84C2A09379700E6F326 /* TopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9388F84B2A09379700E6F326 /* TopHeaderView.swift */; };
@@ -26,7 +28,6 @@
 		93B5CE862A014FD4001CEBCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B5CE852A014FD4001CEBCA /* ContentView.swift */; };
 		93B5CE882A014FD5001CEBCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B5CE872A014FD5001CEBCA /* Assets.xcassets */; };
 		93B5CE8B2A014FD5001CEBCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B5CE8A2A014FD5001CEBCA /* Preview Assets.xcassets */; };
-		93B5CE932A015001001CEBCA /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93B5CE922A015001001CEBCA /* OpenAISwift */; };
 		93B5CE952A02B313001CEBCA /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B5CE942A02B313001CEBCA /* APICaller.swift */; };
 		93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFB8B22A0E87300088F220 /* MainBoxView.swift */; };
 		93BFB8B72A127B9C0088F220 /* QuestionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFB8B62A127B9C0088F220 /* QuestionTextView.swift */; };
@@ -44,6 +45,7 @@
 		933A5EDB2A23AE6D00E3C8EE /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		933A5EDD2A23AF2300E3C8EE /* KeywordSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSelectView.swift; sourceTree = "<group>"; };
 		933A5EDF2A23AF7600E3C8EE /* ProgressingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressingView.swift; sourceTree = "<group>"; };
+		933A5EE52A24743A00E3C8EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		93419B022A15C8890011A08B /* DynamicQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicQuestionView.swift; sourceTree = "<group>"; };
 		9388F8462A07E46800E6F326 /* CollegeLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeLetterView.swift; sourceTree = "<group>"; };
 		9388F84B2A09379700E6F326 /* TopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderView.swift; sourceTree = "<group>"; };
@@ -67,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93B5CE932A015001001CEBCA /* OpenAISwift in Frameworks */,
+				933A5EE32A2457F200E3C8EE /* OpenAISwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +83,14 @@
 				933A5ED92A22723200E3C8EE /* DynamicLetterViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		933A5EE42A24742D00E3C8EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				933A5EE52A24743A00E3C8EE /* LoginView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		93419AFF2A15C1F10011A08B /* JobLetterView */ = {
@@ -111,13 +121,14 @@
 		93B5CE822A014FD4001CEBCA /* WriteNow */ = {
 			isa = PBXGroup;
 			children = (
+				933A5EE42A24742D00E3C8EE /* View */,
+				93419AFF2A15C1F10011A08B /* JobLetterView */,
+				93F462912A0E05390084B8DF /* LetterViews */,
 				93B5CE832A014FD4001CEBCA /* WriteNowApp.swift */,
 				9388F84F2A0D397D00E6F326 /* HomeView.swift */,
 				93B5CE852A014FD4001CEBCA /* ContentView.swift */,
 				933A5ED62A2103DB00E3C8EE /* ViewModel */,
-				93419AFF2A15C1F10011A08B /* JobLetterView */,
 				93F462972A0E0DF80084B8DF /* Model */,
-				93F462912A0E05390084B8DF /* LetterViews */,
 				93F462922A0E055B0084B8DF /* ViewComponents */,
 				93B5CE942A02B313001CEBCA /* APICaller.swift */,
 				93B5CE872A014FD5001CEBCA /* Assets.xcassets */,
@@ -186,7 +197,7 @@
 			);
 			name = WriteNow;
 			packageProductDependencies = (
-				93B5CE922A015001001CEBCA /* OpenAISwift */,
+				933A5EE22A2457F200E3C8EE /* OpenAISwift */,
 			);
 			productName = WriteNow;
 			productReference = 93B5CE802A014FD4001CEBCA /* WriteNow.app */;
@@ -217,7 +228,7 @@
 			);
 			mainGroup = 93B5CE772A014FD4001CEBCA;
 			packageReferences = (
-				93B5CE912A015001001CEBCA /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				933A5EE12A2457F200E3C8EE /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = 93B5CE812A014FD4001CEBCA /* Products */;
 			projectDirPath = "";
@@ -249,6 +260,7 @@
 				933A5EDA2A22723200E3C8EE /* DynamicLetterViewModel.swift in Sources */,
 				933A5ED82A2106F200E3C8EE /* APIKey.swift in Sources */,
 				93BFB8B32A0E87300088F220 /* MainBoxView.swift in Sources */,
+				933A5EE62A24743A00E3C8EE /* LoginView.swift in Sources */,
 				933A5ED52A2103D700E3C8EE /* CollegeLetterViewModel.swift in Sources */,
 				933A5EDE2A23AF2300E3C8EE /* KeywordSelectView.swift in Sources */,
 				933A5EE02A23AF7600E3C8EE /* ProgressingView.swift in Sources */,
@@ -469,7 +481,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		93B5CE912A015001001CEBCA /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+		933A5EE12A2457F200E3C8EE /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
 			requirement = {
@@ -480,9 +492,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		93B5CE922A015001001CEBCA /* OpenAISwift */ = {
+		933A5EE22A2457F200E3C8EE /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 93B5CE912A015001001CEBCA /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			package = 933A5EE12A2457F200E3C8EE /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */

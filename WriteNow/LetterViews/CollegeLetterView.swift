@@ -26,11 +26,15 @@ struct CollegeLetterView: View {
         NavigationStack{
             VStack{
                 TabBarView(index: $index, titles: ["문항 1","문항 2","자율문항"])
-                    .padding(10)
+                    .padding(14)
                 TabView(selection: $index) {
-                    ForEach(questionList.indices){ pageId in
+                    ForEach(0..<2){ pageId in
                         QuestionView(questions: questionList[pageId])
                     }
+                    DynamicQuestionView(headerTitle: "", questions: QuestionSet(
+                        title: "",
+                        texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다","지원 직무 관련 프로젝트/과제 중 기술적으로 가장 어려웠던 과제와 해결방안에 대해 구체적으로 서술하여 주시기 바랍니다")]))
+                    .tag(2)
                 }
             }//Vstack
             .background(Color("MainColor"))
