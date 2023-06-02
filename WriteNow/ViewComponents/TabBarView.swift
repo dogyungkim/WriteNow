@@ -14,7 +14,7 @@ struct TabBarView: View {
         ScrollViewReader { proxy in
             ScrollView(.horizontal, showsIndicators: false){
                 HStack {
-                    ForEach(titles.indices) {id in
+                    ForEach(titles.indices) { id in
                         let title = Text(titles[id]).id(id)
                             .onTapGesture {
                                 withAnimation() {
@@ -28,17 +28,17 @@ struct TabBarView: View {
                         }
                     }
                     .font(.title)
-                    .padding(.top, 50)
+                    .padding(.top, 6)
                     .padding(.horizontal, 5)
                 }
                 .padding(.leading, 20)
+                .padding(.bottom, 20)
             }.onChange(of: index) { value in
-                withAnimation() {
+                withAnimation(.easeInOut) {
                     proxy.scrollTo(value, anchor: UnitPoint(x: UnitPoint.leading.x + leftOffset, y: UnitPoint.leading.y))
                 }
-            }.animation(.easeInOut)
+            }
         }
     }
     private let leftOffset: CGFloat = 0.1
 }
-

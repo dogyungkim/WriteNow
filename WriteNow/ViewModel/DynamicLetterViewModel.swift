@@ -106,7 +106,7 @@ class DynamicLetterViewModel : ObservableObject {
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
             ChatMessage(role: .user, content: #"대학입시를 위한 자기소개서를 쓰려고 해. 내가 "" 사이에 문항을 입력할께. 그리고 자소서에 참고할 키워드들을 입력할께."#),
-            ChatMessage(role: .assistant, content: "문항과 키워드를 입력하시면, 자기소개서를 작성하겠습니다."),
+            ChatMessage(role: .assistant, content: "문항과 키워드를 입력해주세요"),
             ChatMessage(role: .user, content: self.prompt)
         ]
         do{

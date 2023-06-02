@@ -20,30 +20,27 @@ struct QuestionView: View {
     var bindText : String = ""
      
     var body: some View {
-        NavigationView{
-            VStack{
-                VStack{
-                    MyText(title: viewModel.questionSet.title)
-                    VStack(alignment: .leading){
-                        ForEach(Array(zip(viewModel.questionSet.texts.indices, viewModel.questionSet.texts)), id: \.0){ index, text in
-                            QuestionTextView(text: $viewModel.bindText[index], title: text.keywords, fieldText: text.examples)
-                        }
-                    }
-                    .padding(20)
-                    .background(Color(uiColor: .secondarySystemBackground))
-                    .cornerRadius(30)
-                    
-                    Spacer()
-                    
-                    //Create Button with Navigattion
-                    NavigationLink(destination: CollegeLetterResultView(viewModel: self.viewModel)){
-                       MyButton("자소서생성")
-                    }
-                }//Body Vstack
-                .padding(10)
+        NavigationStack{
+
+                MyText(title: viewModel.questionSet.title)
                 
-            } // Vstack
+                VStack(alignment: .leading){
+                    ForEach(Array(zip(viewModel.questionSet.texts.indices, viewModel.questionSet.texts)), id: \.0){ index, text in
+                        QuestionTextView(text: $viewModel.bindText[index], title: text.keywords, fieldText: text.examples)
+                    }
+                }
+                .padding(20)
+                .background(Color(uiColor: .secondarySystemBackground))
+                .cornerRadius(30)
+                Spacer()
+                //Create Button with Navigattion
+                NavigationLink(destination: CollegeLetterResultView(viewModel: self.viewModel)){
+                    MyButton("자소서생성")
+                }//Body Vstack
+            
+           
         }// Navigation View
+        .padding(10)
     }
     
     struct MyText : View {

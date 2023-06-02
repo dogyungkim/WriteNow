@@ -13,7 +13,7 @@ struct HomeView: View {
     @State var selection = 0
     
     var body: some View {
-        NavigationStack{
+        VStack{
             TabView(selection: $selection){
                 //HomeView
                 VStack{
@@ -62,6 +62,8 @@ struct HomeView: View {
                         Image(systemName: "square.and.pencil")
                         Text("진학 자소서")
                     }).tag(2)
+                
+                    
                 
             }//TabView
             .accentColor(Color("MainColor"))

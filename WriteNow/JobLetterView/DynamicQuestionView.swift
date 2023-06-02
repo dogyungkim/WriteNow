@@ -60,7 +60,7 @@ struct DynamicQuestionView: View {
                         }
                     } else {
                         VStack{
-                            if keywordCreated{
+                            if keywordCreated {
                                 Text("필요없는 키워드는 빈칸으로 두세요")
                             }
                             ScrollView{
