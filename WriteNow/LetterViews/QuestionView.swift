@@ -47,10 +47,11 @@ struct QuestionView: View {
         let title : String
         var body : some View{
             Text(title)
-                .font(.title2)
+                .font(.body)
                 .padding(15)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .cornerRadius(30)
+                .frame(width: 380)
             
         }
     }

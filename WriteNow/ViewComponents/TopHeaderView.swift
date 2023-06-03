@@ -24,7 +24,7 @@ struct TopHeaderView: View {
                 .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity, alignment: .top)
-        .frame(height:60)
+        .frame(height:40)
     }
     
     struct TopHeaderView_Previews: PreviewProvider {

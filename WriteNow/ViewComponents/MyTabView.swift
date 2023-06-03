@@ -1,14 +1,14 @@
 //
-//  TabBarView.swift
-//  Timetable
+//  MyTabView.swift
+//  WriteNow
 //
-//  Created by Archie Liu on 2021-05-15.
+//  Created by 김도경 on 2023/06/03.
 //
 
 import SwiftUI
 
-struct TabBarView: View {
-    @Binding var index: Int 
+struct MyTabView: View {
+    @Binding var index: Int
     var titles = ["Home", "NewTab1","NewTab2"]
     var body: some View {
         ScrollViewReader { proxy in
@@ -16,22 +16,25 @@ struct TabBarView: View {
                 HStack {
                     ForEach(titles.indices) { id in
                         let title = Text(titles[id]).id(id)
+                            .font(.title2)
+                            .bold()
                             .onTapGesture {
                                 withAnimation() {
                                     index = id
                                 }
                             }
                         if self.index == id {
-                            title.foregroundColor(.white)
+                            title.foregroundColor(.black)
                         } else {
                             title.foregroundColor(.gray)
                         }
                     }
                     .font(.title)
+                    .padding(.top, 6)
                     .padding(.horizontal, 5)
                 }
-                .padding(.leading, 20)
-                .padding(.bottom, 7)
+                .padding(.leading, 10)
+
             }.onChange(of: index) { value in
                 withAnimation(.easeInOut) {
                     proxy.scrollTo(value, anchor: UnitPoint(x: UnitPoint.leading.x + leftOffset, y: UnitPoint.leading.y))

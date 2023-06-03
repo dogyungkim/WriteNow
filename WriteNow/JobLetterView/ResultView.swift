@@ -59,6 +59,7 @@ struct ResultView: View {
         }//VStack
         .onAppear{
             Task {
+                print("ResultView")
                 viewProgress = try await viewModel.askGPT()
             }
         }

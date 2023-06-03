@@ -17,10 +17,11 @@ struct QuestionTextView: View {
     var body: some View {
         
         Text(title)
-            .font(.title3)
+            .font(.body)
             .padding(.bottom, 1)
         TextField("ex) " + fieldText, text: $text)
             .textFieldStyle(RoundedBorderTextFieldStyle())
+            .font(.footnote)
             .padding(.bottom, 10)
         //for Demo Use
             .onAppear{

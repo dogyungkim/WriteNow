@@ -67,7 +67,7 @@ class DynamicLetterViewModel : ObservableObject {
             ChatMessage(role: .assistant, content: "안녕하세요! 자기소개서 작성에 관심이 있으시다니 멋지네요. 저는 키워드 추천과 관련해서 도움을 드릴 수 있어요. 문항을 입력해주시면 해당 문항에 적합한 자소서 작성에 필요한 핵심 키워드들을 알려드릴게요. 어떤 문항이든 상관없으니 원하는 문항을 입력해주세요! "),
             ChatMessage(role: .user, content: "팀을 이뤄 협업하면서 얻었던 성과 겸험/ 자신이 어떤 역할로 팀에 기여했고, 어떤 교훈을 얻었는지 포함"),
             ChatMessage(role: .assistant, content: "팀워크의 어려움, 팀에서의 역할, 얻은 성과, 얻은 교훈, 리더십의 중요성 , 문제해결 과정"),
-            ChatMessage(role: .user, content: "다음 문항도 알려줘"),
+            ChatMessage(role: .user, content: "다음 문항도 알려줘. No other explanation is needed."),
             ChatMessage(role: .assistant, content: "다음 문항을 입력해주세요."),
             ChatMessage(role: .user, content: str)
         ]
@@ -89,13 +89,12 @@ class DynamicLetterViewModel : ObservableObject {
     func makePrompt(){
         print("DVM: makingPrompt")
         prompt = "자기소개서의 topic은 \"\(self.mainQuestion)\"이고 키워드 들은 "
-        for i in 0..<questionCount {
-            if bindText[i].isEmpty {
+        for i in 0..<keywords.count {
+            if !bindText[i].isEmpty {
             } else {
                 prompt.append(keywords[i] + ":" + bindText[i] + ", ")
             }
         }
-        prompt.popLast()
         print(prompt)
     }
     

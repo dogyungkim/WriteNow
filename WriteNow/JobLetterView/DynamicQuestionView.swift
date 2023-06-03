@@ -40,6 +40,7 @@ struct DynamicQuestionView: View {
             VStack{
                 VStack{
                     Text(viewModel.questionSet.texts[0].keywords)
+                        .font(.body)
                     TextField(viewModel.questionSet.texts[0].examples, text: $text)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .font(.body)
@@ -64,15 +65,13 @@ struct DynamicQuestionView: View {
                                 Text("필요없는 키워드는 빈칸으로 두세요")
                             }
                             ScrollView{
-                                VStack {
                                     ForEach(0..<viewModel.questionCount, id: \.self){ index in
                                         QuestionTextView(text: $viewModel.bindText[index], title: viewModel.keywords[index], fieldText: "")
                                     }
-                                }
-                                .padding(20)
-                                .background(Color(uiColor: .secondarySystemBackground))
-                                .cornerRadius(30)
                             }
+                            .padding(keywordCreated ? 20 : 0)
+                            .background(Color(uiColor: .secondarySystemBackground))
+                            .cornerRadius(30)
                         }
                     }
                 }

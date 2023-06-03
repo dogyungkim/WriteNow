@@ -32,10 +32,8 @@ struct CollegeLetterView: View {
                     .tag(0)
                 QuestionView(questions: questionList[1])
                     .tag(1)
-                DynamicQuestionView(headerTitle: "", questions: QuestionSet(
-                    title: "",
-                    texts: [TextSet("문항을 입력하시면 자소서 작성에 필요한 키워드를 알려드립니다","지원 직무 관련 프로젝트/과제 중 기술적으로 가장 어려웠던 과제와 해결방안에 대해 구체적으로 서술하여 주시기 바랍니다")]))
-                .tag(2)
+                LastCollegeLetterView()
+                    .tag(2)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }//NavigationStackView
