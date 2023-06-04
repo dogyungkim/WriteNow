@@ -56,18 +56,25 @@ struct HomeView: View {
                     Image(systemName: "doc.plaintext")
                     Text("취업 자소서")
                 }).tag(1)
+                    .onTapGesture {
+                        self.endTextEditing()
+                    }
                 
                 CollegeLetterView()
                     .tabItem({
                         Image(systemName: "square.and.pencil")
                         Text("진학 자소서")
                     }).tag(2)
+                    .onTapGesture {
+                        self.endTextEditing()
+                    }
                 
                     
                 
             }//TabView
             .accentColor(Color("MainColor"))
             .animation(.easeOut(duration: 1), value: selection)
+            
         }
     } // body
 }

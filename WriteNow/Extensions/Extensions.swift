@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension Encodable {
     func asDictionary() -> [String:Any] {
@@ -20,4 +21,11 @@ extension Encodable {
             return [:]
         }
     }
+}
+
+extension View {
+  func endTextEditing() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                    to: nil, from: nil, for: nil)
+  }
 }

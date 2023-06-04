@@ -51,7 +51,6 @@ struct QuestionView: View {
                 .padding(15)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .cornerRadius(30)
-                .frame(width: 380)
             
         }
     }

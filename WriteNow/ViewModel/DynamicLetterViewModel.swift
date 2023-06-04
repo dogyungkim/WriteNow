@@ -6,14 +6,6 @@
 //
 
 import Foundation
-//
-//  CollegeLetterViewModel.swift
-//  WriteNow
-//
-//  Created by 김도경 on 2023/05/26.
-//
-
-import Foundation
 import OpenAISwift
 
 class DynamicLetterViewModel : ObservableObject {

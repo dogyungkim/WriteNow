@@ -14,7 +14,7 @@ struct TextEditorView: View {
         
         var body: some View {
             TextEditor(text: $text)
-                .frame(maxWidth: 380, maxHeight: .greatestFiniteMagnitude)
+                .frame( maxHeight: .greatestFiniteMagnitude)
                 .padding()
                 .border(.black,width: 2)
             Spacer()

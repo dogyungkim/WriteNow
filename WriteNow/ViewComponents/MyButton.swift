@@ -25,6 +25,7 @@ struct MyButton: View {
             .foregroundColor(.white)
             .font(.title2)
             .cornerRadius(30)
+            .ignoresSafeArea(.keyboard)
     }
 }
 

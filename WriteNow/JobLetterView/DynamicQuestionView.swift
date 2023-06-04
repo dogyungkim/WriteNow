@@ -87,6 +87,7 @@ struct DynamicQuestionView: View {
                         }
                     } label: {
                         MyButton("키워드 생성")
+                            
                     }
                 } else {
                     NavigationLink (destination: ResultView(viewModel: viewModel)){
