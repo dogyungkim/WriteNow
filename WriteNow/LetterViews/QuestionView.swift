@@ -12,6 +12,7 @@ struct QuestionView: View {
     @ObservedObject var viewModel : CollegeLetterViewModel
     
     @State var text : String = ""
+    @State var example : Bool = true
     
     init(questions : QuestionSet){
         viewModel = CollegeLetterViewModel(questionSet: questions)
@@ -25,6 +26,13 @@ struct QuestionView: View {
                 MyText(title: viewModel.questionSet.title)
                 
                 VStack(alignment: .leading){
+                    HStack{
+                        Spacer()
+                        Button("예시 텍스트") {
+                            example ? viewModel.deleteExample() : viewModel.addExample()
+                            example.toggle()
+                        }
+                    }
                     ForEach(Array(zip(viewModel.questionSet.texts.indices, viewModel.questionSet.texts)), id: \.0){ index, text in
                         QuestionTextView(text: $viewModel.bindText[index], title: text.keywords, fieldText: text.examples)
                     }

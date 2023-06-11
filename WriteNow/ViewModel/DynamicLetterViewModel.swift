@@ -9,13 +9,16 @@ import Foundation
 import OpenAISwift
 
 class DynamicLetterViewModel : ObservableObject {
+    //For API
+    private var openAI : OpenAISwift = OpenAISwift(authToken: APIKey.key)
+    
+    
     
     let headerTitle : String
     var questionSet : QuestionSet
     var mainQuestion : String = ""
     var questionCount : Int = 0
-    //For API
-    private var openAI : OpenAISwift = OpenAISwift(authToken: APIKey.key)
+    
 
     private var prompt : String = "안녕 GPT"
     
@@ -30,7 +33,7 @@ class DynamicLetterViewModel : ObservableObject {
     @Published var textCount = "0"
     @Published var noSpaceTextCount = "0"
     
-  
+    private var savedText : [String] = []
     
     //For Dynamic Keywords
     @Published var keywords : [String] = [] {
@@ -82,10 +85,8 @@ class DynamicLetterViewModel : ObservableObject {
         print("DVM: makingPrompt")
         prompt = "자기소개서의 topic은 \"\(self.mainQuestion)\"이고 키워드 들은 "
         for i in 0..<keywords.count {
-            if !bindText[i].isEmpty {
-            } else {
+            
                 prompt.append(keywords[i] + ":" + bindText[i] + ", ")
-            }
         }
         print(prompt)
     }
@@ -96,7 +97,7 @@ class DynamicLetterViewModel : ObservableObject {
         print("DVM: AskGPT")
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
-            ChatMessage(role: .user, content: #"대학입시를 위한 자기소개서를 쓰려고 해. 내가 "" 사이에 문항을 입력할께. 그리고 자소서에 참고할 키워드들을 입력할께."#),
+            ChatMessage(role: .user, content: #"대학입시를 위한 자기소개서를 쓰려고 해. 내가 "" 사이에 문항을 입력할께. 그리고 자소서에 참고할 키워드들을 입력할께. 문항과 키워드를 가지고 자소서를 작성해줘"#),
             ChatMessage(role: .assistant, content: "문항과 키워드를 입력해주세요"),
             ChatMessage(role: .user, content: self.prompt)
         ]
@@ -129,6 +130,10 @@ class DynamicLetterViewModel : ObservableObject {
             success = true
         }
         return success
+    }
+    
+    func resetKeywords(){
+        keywords = []
     }
     
 }

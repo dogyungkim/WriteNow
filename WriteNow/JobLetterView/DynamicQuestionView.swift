@@ -10,17 +10,16 @@
 struct DynamicQuestionView: View {
     //For progress view
     @State var viewState : Bool = true
-    @State var progress : Double = 100
-    @State var text : String
-    @State var keywordCreated : Bool = false
-    
-    //For responsetext
-    @State var responses : [String] = [] {
+    @State var progress : Double = 1
+    @State var text : String {
         didSet{
-            viewState = false
+            print(text)
+            keywordCreated = false
         }
     }
+    @State var keywordCreated : Bool = false
     
+ 
     @ObservedObject var viewModel : DynamicLetterViewModel
 
     //Initializer
@@ -49,7 +48,7 @@ struct DynamicQuestionView: View {
                 .font(.title2)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .cornerRadius(30)
-                
+          
                 Spacer()
                 
                 ZStack{
@@ -61,8 +60,25 @@ struct DynamicQuestionView: View {
                         }
                     } else {
                         VStack{
-                            if keywordCreated {
-                                Text("필요없는 키워드는 빈칸으로 두세요")
+                            HStack{
+                                if keywordCreated {
+                                    Text("필요없는 키워드는 빈칸으로 두세요. 모든 칸을 빈칸으로 두시면 예시로 작성해드립니다.")
+                                    
+                                    Button {
+                                        viewModel.resetKeywords()
+                                        keywordCreated.toggle()
+                                    } label: {
+                                        ZStack{
+                                            Color("MainColor")
+                                                .cornerRadius(30)
+                                            Text("키워드 지우기")
+                                                .foregroundColor(.white)
+                                                .font(.caption)
+                                        }
+                                        .frame(width: 130,height: 30)
+                                        
+                                    }
+                                }
                             }
                             ScrollView{
                                     ForEach(0..<viewModel.questionCount, id: \.self){ index in
@@ -79,15 +95,16 @@ struct DynamicQuestionView: View {
                 
                 //자소서 생성 버튼
                 if !keywordCreated {
-                    Button {
-                        Task {
-                            viewState = false
-                            viewState = try await viewModel.generateKeywords(str:text)
-                            keywordCreated = true
+                    if !viewState{} else {
+                        Button {
+                            Task {
+                                viewState = false
+                                viewState = try await viewModel.generateKeywords(str:text)
+                                keywordCreated = true
+                            }
+                        } label: {
+                            MyButton("키워드 생성")
                         }
-                    } label: {
-                        MyButton("키워드 생성")
-                            
                     }
                 } else {
                     NavigationLink (destination: ResultView(viewModel: viewModel)){
@@ -97,6 +114,13 @@ struct DynamicQuestionView: View {
                 }// if Button
             }
             .padding(10)
+        }
+        .onAppear{
+            keywordCreated = false
+        }
+        .onDisappear{
+            keywordCreated = false
+            
         }
     }//body
 }

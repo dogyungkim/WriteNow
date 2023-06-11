@@ -10,12 +10,13 @@ import OpenAISwift
 
 class CollegeLetterViewModel : ObservableObject {
     
-    let headerTitle = "진학 자소서"
-    var questionSet : QuestionSet
-    let questionCount : Int
     
     //For API
     private var openAI : OpenAISwift = OpenAISwift(authToken: APIKey.key)
+    
+    let headerTitle = "진학 자소서"
+    var questionSet : QuestionSet
+    let questionCount : Int
 
     private var prompt : String = "안녕 GPT"
     
@@ -32,12 +33,15 @@ class CollegeLetterViewModel : ObservableObject {
     
     @Published var bindText : [String]
     
+    private var savedText : [String] = []
+    
     init(questionSet : QuestionSet){
         self.questionSet = questionSet
         questionCount = questionSet.texts.count
         bindText = []
         for _ in 0..<questionCount {
             bindText.append("")
+            savedText.append("")
         }
     }
     
@@ -57,7 +61,7 @@ class CollegeLetterViewModel : ObservableObject {
         print("VM: AskGPT")
         let chat: [ChatMessage] = [
             ChatMessage(role: .system, content: "너는 좋은 assistant야"),
-            ChatMessage(role: .user, content: #"대학입시를 위한 자기소개서를 쓰려고 해. 내가 "" 사이에 문항을 입력할께. 그리고 자소서에 참고할 키워드들을 입력할께."#),
+            ChatMessage(role: .user, content: #"대학입시를 위한 자기소개서를 쓰려고 해. 내가 "" 사이에 문항을 입력할께. 그리고 자소서에 참고할 키워드들을 입력할께. 문항과 키워드를 가지고 자소서를 작성해줘"#),
             ChatMessage(role: .assistant, content: "문항과 키워드를 입력하시면, 자기소개서를 작성하겠습니다."),
             ChatMessage(role: .user, content: self.prompt)
         ]
@@ -92,6 +96,17 @@ class CollegeLetterViewModel : ObservableObject {
         return success
     }
     
+    func deleteExample(){
+        for i in bindText.indices {
+            savedText[i] = bindText[i]
+            bindText[i] = ""
+        }
+    }
+    func addExample(){
+        for i in bindText.indices {
+            bindText[i] = savedText[i]
+        }
+    }
 }
 
 
