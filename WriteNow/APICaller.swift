@@ -22,7 +22,7 @@ class APICaller: ObservableObject{
     }
 
     @frozen enum Constants{
-        static let key = "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"
+        static let key = "YOUR_API_KEY"
     }
     
     public func setup(){
