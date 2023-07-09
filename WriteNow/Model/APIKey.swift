@@ -8,5 +8,5 @@
 import Foundation
 
 @frozen enum APIKey {
-    static let key = "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"
+    static let key = "Your_API"
 }
