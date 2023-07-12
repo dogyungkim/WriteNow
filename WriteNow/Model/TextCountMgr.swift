@@ -1,9 +1,3 @@
-//
-//  TextCountMgr.swift
-//  WriteNow
-//
-//  Created by 김도경 on 2023/05/23.
-//
 
 import Foundation
 
